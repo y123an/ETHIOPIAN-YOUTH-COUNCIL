@@ -8,28 +8,29 @@ import Footer from "../componenets/LandingPage/Footer";
 
 const LandingPage = () => {
   return (
-    <div>
-      <div className="z-10 absolute w-[100%]">
-        <div>
-          <Navbar />
-        </div>
-      </div>
-      <div>
-        <Hero />
-      </div>
-      <div>
-        <About />
-      </div>
-      <div>
-        <Message />
-      </div>
-      <div>
-        <CoreValues />
-      </div>
-      <div>
-        <Footer />
-      </div>
-    </div>
+    // <div>
+    //   <div className="z-10 absolute w-[100%]">
+    //     <div>
+    //       <Navbar />
+    //     </div>
+    //   </div>
+    //   <div>
+    //     <Hero />
+    //   </div>
+    //   <div>
+    //     <About />
+    //   </div>
+    //   <div>
+    //     <Message />
+    //   </div>
+    //   <div>
+    //     <CoreValues />
+    //   </div>
+    //   <div>
+    //     <Footer />
+    //   </div>
+    // </div>
+    <div></div>
   );
 };
 
