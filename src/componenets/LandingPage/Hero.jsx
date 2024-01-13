@@ -1,6 +1,13 @@
 import React, { useEffect } from "react";
 import { Carousel } from "react-responsive-carousel";
-import { heroImage, heroImage2, logo } from "../../assets/images";
+import {
+  heroImage,
+  heroImage1,
+  heroImage2,
+  heroImage3,
+  heroImage4,
+  logo,
+} from "../../assets/images";
 import { Navigation, Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
@@ -22,24 +29,25 @@ const Hero = () => {
           delay: 2300,
           disableOnInteraction: false,
         }}
-        className="w-[100%] h-[80vh]"
+        className="w-[100%] h-[90vh]"
       >
-        <SwiperSlide className="brightness-50">
-          <img
-            src={heroImage}
-            alt="img"
-            className="w-[100%]  cover object-fill "
-          />
+        <SwiperSlide className="brightness-50 flex justify-center items-center">
+          <img src={heroImage} alt="img" className="w-[100%]  object-center " />
         </SwiperSlide>
-        <SwiperSlide className="brightness-50">
-          <img
-            src={heroImage2}
-            alt="img"
-            className="w-[100%] cover object-fill "
-          />
+        <SwiperSlide className="brightness-50 flex justify-center items-center">
+          <img src={heroImage2} alt="img" className="w-[100%] object-center " />
+        </SwiperSlide>
+        <SwiperSlide className="brightness-50 flex justify-center items-center">
+          <img src={heroImage1} alt="img" className="w-[100%] object-center " />
+        </SwiperSlide>
+        <SwiperSlide className="brightness-50 flex justify-center items-center">
+          <img src={heroImage3} alt="img" className="w-[100%] object-center " />
+        </SwiperSlide>
+        <SwiperSlide className="brightness-50 flex justify-center items-center">
+          <img src={heroImage4} alt="img" className="w-[100%] object-center " />
         </SwiperSlide>
       </Swiper>
-      <div>
+      <div className="flex justify-center items-center">
         <HeroContent />
       </div>
     </div>

@@ -3,7 +3,7 @@ import { empower, volunter } from "../../assets/icons";
 import { motion } from "framer-motion";
 const CoreValues = () => {
   return (
-    <div className="core-values  text-white bg-cover p-20">
+    <div className="core-values  text-white ">
       <div className="grid gap-20 p-10 rounded-3xl">
         <motion.h1
           initial={{

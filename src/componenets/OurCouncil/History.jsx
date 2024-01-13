@@ -1,10 +1,9 @@
-import React from "react";
 import { history } from "../../assets/images";
 import { motion } from "framer-motion";
 
 const History = () => {
   return (
-    <div className="flex  gap-20 justify-center p-10">
+    <div className="flex  gap-20 text-justify justify-center p-10">
       <motion.div
         initial={{
           x: -100,
@@ -20,7 +19,7 @@ const History = () => {
         }}
         className="w-[700px] grid gap-10"
       >
-        <h1 className="text-primary font-extrabold text-3xl">History </h1>
+        <h1 className="text-primary  font-extrabold text-3xl">History </h1>
         <div className="grid gap-10">
           <p>
             The Ethiopian Youth Council (EYC) is a statutory organization

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const Objectives = () => {
   return (
-    <div className="flex items-center justify-center p-10 gap-20">
+    <div className="flex items-center text-justify justify-center p-10 gap-20">
       <motion.div
         initial={{
           x: -100,
