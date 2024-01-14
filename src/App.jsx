@@ -4,6 +4,8 @@ import LandingPage from "./pages/LandingPage";
 import OurHistory from "./pages/OurHistory";
 import OurMission from "./pages/OurMission";
 import OurVision from "./pages/OurVision";
+import Contact from "./pages/Contact";
+import OurTeam from "./pages/OurTeam";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
         <Route path="/our-council/history" element={<OurHistory />} />
         <Route path="/our-council/mission" element={<OurMission />} />
         <Route path="/our-council/vision" element={<OurVision />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/team" element={<OurTeam />} />
       </Routes>
     </BrowserRouter>
   );

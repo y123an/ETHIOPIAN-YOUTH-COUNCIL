@@ -43,9 +43,9 @@ const Navbar = () => {
               textShadow: "0px 0px 8px rgb(255,255,255)",
               boxShadow: "0px 0px 8px rgb(255,255,255)",
             }}
-            className="p-2"
+            className={`${pathname == "/team" && "bg-primary"} p-2`}
           >
-            <Link>Our Team</Link>
+            <Link to={"/team"}>Our Team</Link>
           </motion.button>
           <motion.button
             whileHover={{
@@ -53,9 +53,9 @@ const Navbar = () => {
               textShadow: "0px 0px 8px rgb(255,255,255)",
               boxShadow: "0px 0px 8px rgb(255,255,255)",
             }}
-            className="p-2"
+            className={`${pathname == "/contact" && "bg-primary"} p-2`}
           >
-            <p>Contact Us</p>
+            <Link to={"/contact"}>Contact Us</Link>
           </motion.button>
           <motion.button
             whileHover={{
