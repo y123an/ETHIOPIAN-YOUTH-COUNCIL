@@ -21,7 +21,7 @@ const TeamCard = () => {
         className="
       p-2"
       >
-        <p className="text-xl font-bold">Hon.Fuad Gena</p>
+        <p className="text-xl font-bold">Hon. Fuad Gena</p>
         <p className="font-light">President</p>
       </div>
     </div>
