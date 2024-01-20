@@ -6,6 +6,14 @@ import OurMission from "./pages/OurMission";
 import OurVision from "./pages/OurVision";
 import Contact from "./pages/Contact";
 import OurTeam from "./pages/OurTeam";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Youth from "./pages/Dashboard/Youth";
+import Companies from "./pages/Dashboard/Companies";
+import Account from "./pages/Dashboard/Account";
+import Login from "./pages/Auth/Login";
+import Register from "./pages/Auth/YouthRegister";
+import YouthRegister from "./pages/Auth/YouthRegister";
+import OrganizationRegister from "./pages/Auth/OrganizationRegister";
 
 function App() {
   return (
@@ -17,6 +25,16 @@ function App() {
         <Route path="/our-council/vision" element={<OurVision />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/team" element={<OurTeam />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/youth" element={<Youth />} />
+        <Route path="/companies" element={<Companies />} />
+        <Route path="/account" element={<Account />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register-youth" element={<YouthRegister />} />
+        <Route
+          path="/register-organization"
+          element={<OrganizationRegister />}
+        />
       </Routes>
     </BrowserRouter>
   );

@@ -6,5 +6,16 @@ import heroImage2 from "./hero-image2.jpg";
 import heroImage1 from "./hero-image1.jpg";
 import heroImage3 from "./hero-image3.jpg";
 import heroImage4 from "./hero-image4.jpg";
+import authBg from "./register_bg_2.png";
 
-export { logo, heroImage3, heroImage1,heroImage4,objectives, history, heroImage, heroImage2 };
+export {
+  logo,
+  authBg,
+  heroImage3,
+  heroImage1,
+  heroImage4,
+  objectives,
+  history,
+  heroImage,
+  heroImage2,
+};
