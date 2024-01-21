@@ -1,10 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { authBg } from "../../assets/images";
 import { useNavigate } from "react-router-dom";
+import { Bounce, toast } from "react-toastify";
+import Axios from "../../middlewares/Axios";
 
 export default function YouthRegister() {
   const navigate = useNavigate();
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [cpassword, setCpassword] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (cpassword === password) {
+      await Axios.post("youth/register", {
+        fname,
+        lname,
+        email,
+        password,
+      })
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    } else {
+      toast.warn("Password Dont Match!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    }
+  };
 
   return (
     <>
@@ -61,7 +94,7 @@ export default function YouthRegister() {
                   <div className="text-blue-700 text-xl text-center mb-3 font-bold">
                     <small>Or sign up with credentials</small>
                   </div>
-                  <form>
+                  <form onSubmit={handleSubmit}>
                     <div className="flex gap-2">
                       <div className="relative w-full mb-3">
                         <label
@@ -74,6 +107,9 @@ export default function YouthRegister() {
                           type="text"
                           className="border-[1px] border-primary px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                           placeholder="First Name"
+                          value={fname}
+                          required
+                          onChange={(e) => setFname(e.target.value)}
                         />
                       </div>
                       <div className="relative w-full mb-3">
@@ -87,6 +123,9 @@ export default function YouthRegister() {
                           type="text"
                           className="border-[1px] border-primary px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                           placeholder="Last Name"
+                          value={lname}
+                          required
+                          onChange={(e) => setLname(e.target.value)}
                         />
                       </div>
                     </div>
@@ -101,6 +140,9 @@ export default function YouthRegister() {
                         type="email"
                         className="border-[1px] border-primary px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         placeholder="Email"
+                        value={email}
+                        required
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </div>
 
@@ -115,6 +157,9 @@ export default function YouthRegister() {
                         type="password"
                         className="border-[1px] px-3 py-3  text-blueGray-600 bg-white border-primary  rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         placeholder="Password"
+                        value={password}
+                        required
+                        onChange={(e) => setPassword(e.target.value)}
                       />
                     </div>
                     <div className="relative w-full mb-3">
@@ -128,6 +173,9 @@ export default function YouthRegister() {
                         type="password"
                         className="border-[1px] border-primary px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         placeholder="Password"
+                        value={cpassword}
+                        required
+                        onChange={(e) => setCpassword(e.target.value)}
                       />
                     </div>
 
@@ -154,7 +202,7 @@ export default function YouthRegister() {
                     <div className="text-center mt-6">
                       <button
                         className="bg-blue-600 text-white  active:bg-blueGray-600 text-lg font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150 hover:bg-blue-500"
-                        type="button"
+                        type="submit"
                       >
                         Create Account
                       </button>

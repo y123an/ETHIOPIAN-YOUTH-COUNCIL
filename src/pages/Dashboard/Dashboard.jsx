@@ -7,8 +7,19 @@ import OverviewSales from "../../componenets/Dashboard/OverviewSales";
 // import OverviewTraffic from "../../componenets/Dashboard/OverviewTraffic";
 import DashboardLayout from "../../layouts/Dashboard/Layout";
 import OverviewLatestProducts from "../../componenets/Dashboard/OverviewLatestProducts";
+import { useAdminStore } from "../../context/adminStore";
+import { useEffect } from "react";
 
 const Dashboard = () => {
+  const dashboardOverView = useAdminStore((store) => store.dasboardOverView);
+  const getDashboardOverView = useAdminStore(
+    (store) => store.getDashboardOverView
+  );
+
+  useEffect(() => {
+    getDashboardOverView();
+  }, []);
+
   return (
     <>
       <DashboardLayout>
@@ -26,7 +37,7 @@ const Dashboard = () => {
                   difference={10}
                   positive
                   sx={{ height: "100%" }}
-                  value="2400"
+                  value={dashboardOverView?.youthCount}
                 />
               </Grid>
               <Grid xs={12} sm={6} lg={2.5}>
@@ -34,7 +45,7 @@ const Dashboard = () => {
                   difference={16}
                   positive={false}
                   sx={{ height: "100%" }}
-                  value="500"
+                  value={dashboardOverView?.organizationCount}
                 />
               </Grid>
               <Grid xs={12} sm={6} lg={2.5}>

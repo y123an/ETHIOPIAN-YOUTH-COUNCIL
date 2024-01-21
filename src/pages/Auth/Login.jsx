@@ -1,14 +1,58 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { authBg } from "../../assets/images";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { useState } from "react";
+import Axios from "../../middlewares/Axios";
+import { Bounce, toast } from "react-toastify";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await Axios.post("/login", {
+      email,
+      password,
+    })
+      .then((res) => {
+        if (res.data.success) {
+          if (res.data.role === "youth") {
+            localStorage.setItem("youth-token", res.data.token);
+          } else if (res.data.role === "org") {
+            localStorage.setItem("org-token", res.data.token);
+          } else if (res.data.role === "admin") {
+            localStorage.setItem("admin-token", res.data.token);
+            navigate("/dashboard");
+          }
+          toast.success("Signed in Successfully", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("wrong email or password!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+      });
   };
 
   return (
@@ -65,7 +109,7 @@ export default function Login() {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        className="border-[1px] border-primary px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         placeholder="Email"
                       />
                     </div>
@@ -81,7 +125,7 @@ export default function Login() {
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        className="border-[1px] border-primary px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         placeholder="Password"
                       />
                     </div>
@@ -100,8 +144,8 @@ export default function Login() {
 
                     <div className="text-center mt-6">
                       <button
-                        className="bg-blueGray-800  active:bg-blueGray-600 text-lg font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                        type="button"
+                        className="bg-blue-600 text-white  active:bg-blueGray-600 text-lg font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                        type="submit"
                       >
                         Sign In
                       </button>

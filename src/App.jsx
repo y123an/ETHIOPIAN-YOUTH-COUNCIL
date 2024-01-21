@@ -14,6 +14,7 @@ import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/YouthRegister";
 import YouthRegister from "./pages/Auth/YouthRegister";
 import OrganizationRegister from "./pages/Auth/OrganizationRegister";
+import AdminPrivateRoutes from "./utils/AdminPrivateRoutes";
 
 function App() {
   return (
@@ -25,10 +26,12 @@ function App() {
         <Route path="/our-council/vision" element={<OurVision />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/team" element={<OurTeam />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/youth" element={<Youth />} />
-        <Route path="/companies" element={<Companies />} />
-        <Route path="/account" element={<Account />} />
+        <Route element={<AdminPrivateRoutes />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/youth" element={<Youth />} />
+          <Route path="/companies" element={<Companies />} />
+          <Route path="/account" element={<Account />} />
+        </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register-youth" element={<YouthRegister />} />
         <Route
