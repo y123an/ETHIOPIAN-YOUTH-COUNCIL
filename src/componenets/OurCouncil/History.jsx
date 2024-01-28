@@ -19,43 +19,26 @@ const History = () => {
         }}
         className="w-[700px] grid gap-10"
       >
-        <h1 className="text-primary  font-extrabold text-3xl">History </h1>
+        <div className="flex">
+          <h1 className="font-light text-3xl py-3 border-b-4 border-primary">
+            Introduction
+          </h1>
+        </div>
         <div className="grid gap-10">
           <p>
-            The Ethiopian Youth Council (EYC) is a statutory organization
-            established according to the National Youth Policy of Ethiopia
-            (2004), dedicated to empowering Ethiopian youth and promoting their
+            The Ethiopian Youth Council is a statutory organization established
+            according to the National Youth Policy of Ethiopia on April 02,
+            2023, Dedicated to empowering Ethiopian youth and promoting their
             active participation in the country's social, economic, and
-            political development. Established on April 02, 2023, and registered
-            by Authority for Civil Society Organizations with registry number
-            6884 on May 29, 2023. It is the official representative voice of
-            more than 41 million young people in Ethiopia. It aims to promote
-            youth participation in decision-making processes, foster a culture
-            of volunteerism, provide opportunities for personal and professional
-            development, and inclusion of the youth in governance and national
-            affairs, and ensures programs are youth-centered and driven.
+            political development
           </p>
           <p>
-            The self-governing Council operates with a mandate to voice for the
-            young people, mobilize, coordinate, and supervise youth and youth
-            organizations, design and implement national youth programs and
-            policies, protect the rights, ensure benefits, and enhance the
-            capacity of the young people and advise the government on youth
-            matters
-          </p>
-          <p>
-            The Council is a member of the Pan African Youth Union (PAYU). This
-            partnership enables the council to connect with other Youth Councils
-            and Youth Organizations across Africa and to participate in regional
-            and international initiatives aimed at promoting youth development
-            and empowerment.
-          </p>
-          <p>
-            As part of its commitment to transparency and accountability, the
-            Ethiopian Youth Council regularly publishes reports and updates on
-            its activities and achievements. The organization also engages with
-            its stakeholders through various channels, including social media,
-            community events, and public forums.
+            EYC is the official representative And voice of more than 40.1
+            million young people of Ethiopia, Aims to promote Active youth
+            participation and engagement in decision-making processes, foster a
+            culture of volunteerism, holistic youth empowerment,inclusion of the
+            youth in governance, national and international affairs and ensures
+            programs are youth-centered and driven.
           </p>
           <p>
             The organization recognizes the important role that young people can
@@ -63,6 +46,21 @@ const History = () => {
             development, and it provides opportunities for young people to
             engage in volunteer activities that address the social, economic,
             and environmental challenges facing their communities.
+          </p>
+          <p>
+            The self-governing council operates with a mandate to voice for the
+            young people, mobilize, coordinate, and supervise youth and
+            youth-led or youth focused organizations, design and implement
+            national youth programs and policies, protect the rights, ensure
+            benefits, and enhance the capacity of the young people and advise
+            the government on youth matters.
+          </p>
+          <p>
+            The Council is a member of the Pan African Youth Union (PAYU). This
+            partnership enables the council to connect with other Youth Councils
+            and Youth Organizations across Africa and to participate in regional
+            and international initiatives aimed at promoting youth development
+            and empowerment.
           </p>
           <p>
             Overall, the Ethiopian Youth Council is a dynamic and impactful
@@ -75,7 +73,7 @@ const History = () => {
           </p>
         </div>
       </motion.div>
-      <motion.div
+      {/* <motion.div
         initial={{
           x: 100,
           opacity: 0,
@@ -91,7 +89,7 @@ const History = () => {
         className="flex justify-center items-center"
       >
         <img src={history} alt="" className="w-[600px]" />
-      </motion.div>
+      </motion.div> */}
     </div>
   );
 };

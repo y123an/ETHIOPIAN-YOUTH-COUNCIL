@@ -8,21 +8,26 @@ import Footer from "../componenets/LandingPage/Footer";
 const OurHistory = () => {
   return (
     <div>
-      <div className="absolute z-10 w-[100%]">
+      <div className="">
         <Navbar />
       </div>
       <div>
-        <OurCouncilImage />
+        <OurCouncilImage
+          title={"Introduction"}
+          description={"About Ethiopian youth council"}
+        />
       </div>
-      <div className="absolute top-[250px] right-[200px]">
-        <OurCouncilNavigation />
+      <div className="flex w-full gap-[200px]">
+        <div className="">
+          <OurCouncilNavigation />
+        </div>
+        <div>
+          <History />
+        </div>
       </div>
-      <div>
-        <History />
-      </div>
-      <div>
+      {/* <div>
         <Objectives />
-      </div>
+      </div> */}
       <div>
         <Footer />
       </div>

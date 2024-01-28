@@ -15,6 +15,12 @@ import Register from "./pages/Auth/YouthRegister";
 import YouthRegister from "./pages/Auth/YouthRegister";
 import OrganizationRegister from "./pages/Auth/OrganizationRegister";
 import AdminPrivateRoutes from "./utils/AdminPrivateRoutes";
+import News from "./pages/News";
+import Messages from "./pages/Messages";
+import Resources from "./pages/Resources";
+import Publication from "./pages/Publication";
+import UploadResources from "./pages/Dashboard/Resources";
+import UploadPublication from "./pages/Dashboard/Publication";
 
 function App() {
   return (
@@ -24,13 +30,19 @@ function App() {
         <Route path="/our-council/history" element={<OurHistory />} />
         <Route path="/our-council/mission" element={<OurMission />} />
         <Route path="/our-council/vision" element={<OurVision />} />
+        <Route path="/our-council/leadership" element={<OurTeam />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/team" element={<OurTeam />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/messages" element={<Messages />} />
+        <Route path="/resources" element={<Resources />} />
+        <Route path="/publication" element={<Publication />} />
         <Route element={<AdminPrivateRoutes />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/youth" element={<Youth />} />
           <Route path="/companies" element={<Companies />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/upload-resources" element={<UploadResources />} />
+          <Route path="/upload-publication" element={<UploadPublication />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register-youth" element={<YouthRegister />} />

@@ -1,11 +1,10 @@
 import Footer from "../componenets/LandingPage/Footer";
 import Navbar from "../componenets/LandingPage/Navbar";
-import LeaderShip from "../componenets/OurCouncil/LeaderShip";
+import NewsNavigation from "../componenets/OurCouncil/NewsNavigation";
 import OurCouncilImage from "../componenets/OurCouncil/OurCouncilImage";
-import OurCouncilNavigation from "../componenets/OurCouncil/OurCouncilNavigation";
-import TeamCard from "../componenets/OurTeam/TeamCard";
+import Resource from "../componenets/Resource";
 
-const OurTeam = () => {
+const Resources = () => {
   return (
     <div>
       <div className="">
@@ -13,16 +12,16 @@ const OurTeam = () => {
       </div>
       <div>
         <OurCouncilImage
-          title={"Leadership"}
-          description={"ethiopian youth council's leaders "}
+          title={"Resources"}
+          description={"Resources from Ethiopian youth council"}
         />
       </div>
-      <div className="flex gap-[200px]">
+      <div className="flex gap-[100px]">
         <div className="">
-          <OurCouncilNavigation />
+          <NewsNavigation />
         </div>
-        <div>
-          <LeaderShip />
+        <div className="py-20 px-10">
+          <Resource />
         </div>
       </div>
       <div>
@@ -32,4 +31,4 @@ const OurTeam = () => {
   );
 };
 
-export default OurTeam;
+export default Resources;

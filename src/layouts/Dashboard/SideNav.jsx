@@ -29,7 +29,7 @@ const SideNav = (props) => {
           height: "100%",
         },
         "& .simplebar-scrollbar:before": {
-          background: "black",
+          background: "blue",
         },
       }}
     >
@@ -65,19 +65,19 @@ const SideNav = (props) => {
             className="bg-slate-800"
           >
             <div>
-              <Typography color="inherit" variant="subtitle1">
+              <Typography color="red" variant="subtitle1">
                 Devias
               </Typography>
               <Typography className="text-neutral-400" variant="body2">
                 Production
               </Typography>
             </div>
-            <SvgIcon fontSize="small" sx={{ color: "neutral.500" }}>
+            <SvgIcon fontSize="small" sx={{}}>
               <ChevronUpDownIcon />
             </SvgIcon>
           </Box>
         </Box>
-        <Divider sx={{ borderColor: "neutral.700" }} />
+        <Divider sx={{ borderColor: "blue" }} />
         <Box
           component="nav"
           sx={{
@@ -124,7 +124,7 @@ const SideNav = (props) => {
         open
         PaperProps={{
           sx: {
-            backgroundColor: "black",
+            backgroundColor: "#0753E1",
             color: "common.white",
             width: 280,
           },

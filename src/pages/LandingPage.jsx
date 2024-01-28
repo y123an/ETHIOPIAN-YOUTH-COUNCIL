@@ -5,11 +5,13 @@ import About from "../componenets/LandingPage/About";
 import Message from "../componenets/LandingPage/Message";
 import CoreValues from "../componenets/LandingPage/CoreValues";
 import Footer from "../componenets/LandingPage/Footer";
+import { partners } from "../assets/partners";
+import News from "../componenets/LandingPage/News";
 
 const LandingPage = () => {
   return (
     <div>
-      <div className="z-10 absolute w-[100%]">
+      <div className="">
         <div>
           <Navbar />
         </div>
@@ -25,6 +27,12 @@ const LandingPage = () => {
       </div>
       <div>
         <CoreValues />
+      </div>
+      <div>
+        <News />
+      </div>
+      <div className="flex p-16 justify-center">
+        <img src={partners} alt="" />
       </div>
       <div>
         <Footer />

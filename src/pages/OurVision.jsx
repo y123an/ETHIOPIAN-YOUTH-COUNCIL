@@ -8,17 +8,22 @@ import Vision from "../componenets/OurCouncil/Vision";
 const OurVision = () => {
   return (
     <div>
-      <div className="absolute z-10 w-[100%]">
+      <div className="">
         <Navbar />
       </div>
       <div>
-        <OurCouncilImage />
+        <OurCouncilImage
+          title={"our vision"}
+          description={"ethiopian youth council's Vision and goals "}
+        />
       </div>
-      <div className="absolute top-[250px] right-[200px]">
-        <OurCouncilNavigation />
-      </div>
-      <div>
-        <Vision />
+      <div className="flex gap-[200px]">
+        <div className="">
+          <OurCouncilNavigation />
+        </div>
+        <div>
+          <Vision />
+        </div>
       </div>
       <div>
         <Footer />

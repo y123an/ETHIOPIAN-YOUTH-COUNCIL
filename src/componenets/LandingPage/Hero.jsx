@@ -31,23 +31,24 @@ const Hero = () => {
         }}
         className="w-[100%] h-[90vh]"
       >
-        <SwiperSlide className="brightness-50 flex justify-center items-center">
+        <SwiperSlide className="">
           <img src={heroImage} alt="img" className="w-[100%]  object-center " />
         </SwiperSlide>
-        <SwiperSlide className="brightness-50 flex justify-center items-center">
+        <SwiperSlide className="">
           <img src={heroImage2} alt="img" className="w-[100%] object-center " />
         </SwiperSlide>
-        <SwiperSlide className="brightness-50 flex justify-center items-center">
+        <SwiperSlide className="">
           <img src={heroImage1} alt="img" className="w-[100%] object-center " />
         </SwiperSlide>
-        <SwiperSlide className="brightness-50 flex justify-center items-center">
+        <SwiperSlide className="">
           <img src={heroImage3} alt="img" className="w-[100%] object-center " />
         </SwiperSlide>
-        <SwiperSlide className="brightness-50 flex justify-center items-center">
+        <SwiperSlide className="">
           <img src={heroImage4} alt="img" className="w-[100%] object-center " />
         </SwiperSlide>
       </Swiper>
-      <div className="flex justify-center items-center">
+      <div className="bg-black/[0.3] absolute w-full top-20 h-[90vh] z-10 "></div>
+      <div className="absolute w-full flex justify-center items-center top-20 h-[90vh] z-20">
         <HeroContent />
       </div>
     </div>

@@ -45,4 +45,22 @@ export const items = [
       </SvgIcon>
     ),
   },
+  {
+    title: "Resources",
+    path: "/upload-resources",
+    icon: (
+      <SvgIcon fontSize="small">
+        <UserIcon />
+      </SvgIcon>
+    ),
+  },
+  {
+    title: "Publication",
+    path: "/upload-publication",
+    icon: (
+      <SvgIcon fontSize="small">
+        <UserIcon />
+      </SvgIcon>
+    ),
+  },
 ];

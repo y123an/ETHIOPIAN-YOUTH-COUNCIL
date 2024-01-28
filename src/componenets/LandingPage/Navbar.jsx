@@ -1,23 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { logo } from "../../assets/images";
 import { Link, useLocation } from "react-router-dom";
 import { color, motion } from "framer-motion";
+import { TiArrowRightOutline } from "react-icons/ti";
+import ArrowDownIcon from "@heroicons/react/24/solid/ArrowDownIcon";
+import { FaArrowCircleDown, FaArrowDown } from "react-icons/fa";
 const Navbar = () => {
   const { pathname } = useLocation();
+  const [seeNews, setSeeNews] = useState("hidden");
+  const [seeOurCoucil, setSeeOurCoucil] = useState("hidden");
   return (
-    <div className="flex justify-around items-center h-[150px] ">
-      <div className="flex w-full items-center bg-[rgba(25,117,190,0.5)] p-1 justify-around">
-        <div>
-          <img src={logo} alt="logo" />
-        </div>
-        <div className="flex gap-14 items-center  rounded-md text-white ">
+    <div className="flex justify-around font-light items-center bg-[#ECF0F1]   w-full text-black">
+      <div className="flex w-full items-center  justify-around z-30 ">
+        <Link to={"/"}>
+          <img src={logo} alt="logo" className="w-[80px]" />
+        </Link>
+        <div className="flex gap-4 text-[14px]   items-center rounded-md">
           <motion.button
             whileHover={{
               scale: 1.2,
               textShadow: "0px 0px 8px rgb(255,255,255)",
               boxShadow: "0px 0px 8px rgb(255,255,255)",
             }}
-            className={`${pathname === "/" && "bg-primary"} p-2`}
+            className={`${pathname === "/" && "border-b-4 border-primary"} `}
           >
             <Link to={"/"}>Home</Link>
           </motion.button>
@@ -29,13 +34,50 @@ const Navbar = () => {
             }}
             className={`${
               pathname === "/our-council/history"
-                ? "bg-primary"
+                ? "border-b-4 border-primary"
                 : pathname === "/our-council/mission"
-                ? "bg-primary"
-                : pathname === "/our-council/vision" && "bg-primary"
-            } p-2`}
+                ? "border-b-4 border-primary"
+                : pathname === "/our-council/vision" &&
+                  "border-b-4 border-primary"
+            } ps-1`}
+            onMouseEnter={() => setSeeOurCoucil("flex")}
+            onMouseLeave={() => {
+              setSeeOurCoucil("hidden");
+            }}
           >
-            <Link to={"/our-council/history"}>Our Council</Link>
+            <Link
+              to={"/our-council/history"}
+              className="flex items-center gap-2"
+            >
+              Our Council
+              <FaArrowDown size={13} />
+            </Link>
+            <motion.div
+              initial={{ opacity: 0, y: -100 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              className={`absolute bg-[#ECF0F1] rounded-md top-[23px] ${seeOurCoucil}`}
+              onMouseEnter={() => setSeeOurCoucil("flex")}
+            >
+              <div className="flex flex-col w-[150px] items-start px-4 py-6">
+                <div className="text-black flex items-center gap-2">
+                  <TiArrowRightOutline size={14} />
+                  <Link to={"/our-council/history"}>History</Link>
+                </div>
+                <div className="text-black flex items-center gap-2">
+                  <TiArrowRightOutline size={14} />
+                  <Link to={"/our-council/mission"}>Our Mission</Link>
+                </div>
+                <div className="text-black flex items-center gap-2">
+                  <TiArrowRightOutline size={14} />
+                  <Link to={"/our-council/vision"}>Our Vision</Link>
+                </div>
+                <div className="text-black flex items-center gap-2">
+                  <TiArrowRightOutline size={14} />
+                  <Link to={"/our-council/leadership"}>Leadership</Link>
+                </div>
+              </div>
+            </motion.div>
           </motion.button>
           <motion.button
             whileHover={{
@@ -43,41 +85,85 @@ const Navbar = () => {
               textShadow: "0px 0px 8px rgb(255,255,255)",
               boxShadow: "0px 0px 8px rgb(255,255,255)",
             }}
-            className={`${pathname == "/team" && "bg-primary"} p-2`}
-          >
-            <Link to={"/team"}>Our Team</Link>
-          </motion.button>
-          <motion.button
-            whileHover={{
-              scale: 1.2,
-              textShadow: "0px 0px 8px rgb(255,255,255)",
-              boxShadow: "0px 0px 8px rgb(255,255,255)",
-            }}
-            className={`${pathname == "/contact" && "bg-primary"} p-2`}
-          >
-            <Link to={"/contact"}>Contact Us</Link>
-          </motion.button>
-          <motion.button
-            whileHover={{
-              scale: 1.2,
-              textShadow: "0px 0px 8px rgb(255,255,255)",
-              boxShadow: "0px 0px 8px rgb(255,255,255)",
-            }}
-            className="p-2"
+            className="ps-1"
           >
             <p>From Coucil</p>
           </motion.button>
-        </div>
-        <div>
           <motion.button
             whileHover={{
               scale: 1.2,
               textShadow: "0px 0px 8px rgb(255,255,255)",
               boxShadow: "0px 0px 8px rgb(255,255,255)",
             }}
-            className="bg-primary text-white px-3 py-2 rounded-lg"
+            className="ps-1"
           >
-            Become a Member
+            <p>Where We Are</p>
+          </motion.button>
+          <motion.button
+            whileHover={{
+              scale: 1.2,
+              textShadow: "0px 0px 8px rgb(255,255,255)",
+              boxShadow: "0px 0px 8px rgb(255,255,255)",
+            }}
+            className="ps-1"
+          >
+            <p>What We Do</p>
+          </motion.button>
+          <motion.div
+            whileHover={{
+              scale: 1.2,
+              textShadow: "0px 0px 8px rgb(255,255,255)",
+              boxShadow: "0px 0px 8px rgb(255,255,255)",
+            }}
+            onMouseLeave={() => setSeeNews("hidden")}
+            onMouseEnter={() => setSeeNews("flex")}
+            className="z-20 re"
+          >
+            <motion.button className="ps-1">
+              <div className="flex gap-1 items-center justify-center">
+                <p>News And Media</p>
+                <FaArrowDown size={13} />
+              </div>
+            </motion.button>
+            <motion.div
+              initial={{ opacity: 0, y: -100 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              className={`absolute bg-[#ECF0F1] rounded-md top-[20px] ${seeNews}`}
+              onMouseEnter={() => setSeeNews("flex")}
+            >
+              <div className="flex flex-col items-start px-4 py-6">
+                <div className="text-black flex items-center gap-2">
+                  <TiArrowRightOutline size={14} />
+                  <Link to={"/news"}>News</Link>
+                </div>
+                <div className="text-black flex items-center gap-2">
+                  <TiArrowRightOutline size={14} />
+                  <Link to={"/publication"}>Publiction</Link>
+                </div>
+                <div className="text-black flex items-center gap-2">
+                  <TiArrowRightOutline size={14} />
+                  <Link to={"/resources"}>Resources</Link>
+                </div>
+                <div className="text-black flex items-center gap-2">
+                  <TiArrowRightOutline size={14} />
+                  <Link to={"/messages"}>Messages</Link>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          <motion.button
+            whileHover={{
+              scale: 1.2,
+              textShadow: "0px 0px 8px rgb(255,255,255)",
+              boxShadow: "0px 0px 8px rgb(255,255,255)",
+            }}
+            className={`${
+              pathname == "/contact" && "border-b-4 border-primary"
+            } ps-1`}
+          >
+            <Link to={"/contact"}>Contact Us</Link>
           </motion.button>
         </div>
       </div>

@@ -8,17 +8,22 @@ import Mission from "../componenets/OurCouncil/Mission";
 const OurMission = () => {
   return (
     <div>
-      <div className="absolute z-10 w-[100%]">
+      <div className="">
         <Navbar />
       </div>
       <div>
-        <OurCouncilImage />
+        <OurCouncilImage
+          title={"our mission"}
+          description={"missions of the ethiopian youth council "}
+        />
       </div>
-      <div className="absolute top-[250px] right-[200px]">
-        <OurCouncilNavigation />
-      </div>
-      <div>
-        <Mission />
+      <div className="flex gap-[200px]">
+        <div className="">
+          <OurCouncilNavigation />
+        </div>
+        <div>
+          <Mission />
+        </div>
       </div>
       <div>
         <Footer />
