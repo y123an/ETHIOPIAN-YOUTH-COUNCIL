@@ -5,7 +5,7 @@ const Vision = () => {
   return (
     <div className="grid gap-10 justify-center font-light p-10">
       <div className="flex">
-        <h1 className="text-3xl font-light p-2 border-b-4 border-primary ">
+        <h1 className="text-3xl head-font font-light p-2 border-b-4 border-primary ">
           Our Vision
         </h1>
       </div>
@@ -17,7 +17,7 @@ const Vision = () => {
         </p>
       </div>
       <div className="flex">
-        <h1 className="text-3xl  font-light p-2 border-b-4 border-primary ">
+        <h1 className="text-3xl head-font  font-light p-2 border-b-4 border-primary ">
           Our Goals
         </h1>
       </div>
@@ -36,13 +36,11 @@ const Vision = () => {
           }}
           className="flex flex-col justify-center items-center"
         >
-          <div className="flex w-full text-justify  bg-primary/70 gap-10 p-2 rounded-b-md">
+          <div className="flex w-full text-justify  bg-primary/[0.2] shadow-lg text-black gap-10 p-2 rounded-b-md">
             <img src={ladder} alt="opportunity" className="w-[30px]" />
-            <h1 className="text-white font-light text-xl">
-              Empowering Young People
-            </h1>
+            <h1 className=" font-light  text-xl">Empowering Young People</h1>
           </div>
-          <div className="bg-yellow-200/[0.2] p-5 shadow-md">
+          <div className="bg-primary/[.2] p-5 shadow-md">
             <p className=" text-lg text-justify">
               The Ethiopian Youth Council seeks to empower young people by
               providing them with the tools, resources, and opportunities they
@@ -66,13 +64,13 @@ const Vision = () => {
           }}
           className="flex flex-col justify-center items-center "
         >
-          <div className="flex w-full text-justify  bg-primary/70 gap-10 p-2 rounded-b-md">
+          <div className="flex w-full shadow-lg text-justify  bg-primary/[.2] gap-10 p-2 rounded-b-md">
             <img src={participation} alt="opportunity" className="w-[30px]" />
-            <h1 className="text-white font-light text-xl">
+            <h1 className="text-black font-light text-xl">
               Promoting Youth Engagement
             </h1>
           </div>
-          <div className="bg-yellow-200/[0.2] p-5 shadow-md">
+          <div className="bg-primary/[0.2] p-5 shadow-md">
             <p className=" text-lg text-justify">
               The Ethiopian Youth Council aims to promote the engagement of
               young people in the social, economic, and political development of
@@ -96,13 +94,13 @@ const Vision = () => {
           }}
           className="flex flex-col justify-center items-center "
         >
-          <div className="flex w-full text-justify  bg-primary/70 gap-10 p-2 rounded-b-md">
+          <div className="flex w-full text-justify shadow-lg  bg-primary/[.2] gap-10 p-2 rounded-b-md">
             <img src={voice} alt="opportunity" className="w-[30px]" />
-            <h1 className="text-white font-light text-xl">
+            <h1 className="text-black font-light text-xl">
               Fostering Leadership
             </h1>
           </div>
-          <div className="bg-yellow-200/[0.2] p-5 shadow-md">
+          <div className="bg-primary/[0.2] p-5 shadow-md">
             <p className=" text-lg text-justify">
               The Ethiopian Youth Council aims to foster the development of
               young leaders who can contribute to the development of Ethiopia.
@@ -125,11 +123,11 @@ const Vision = () => {
           }}
           className="flex flex-col justify-center items-center "
         >
-          <div className="flex w-full text-justify  bg-primary/70 gap-10 p-2 rounded-b-md">
+          <div className="flex w-full shadow-lg text-justify  bg-primary/[.2] gap-10 p-2 rounded-b-md">
             <img src={opportunity} alt="opportunity" className="w-[30px]" />
-            <h1 className="text-white font-light text-xl">Building Networks</h1>
+            <h1 className="text-black font-light text-xl">Building Networks</h1>
           </div>
-          <div className="bg-yellow-200/[0.2] p-5 shadow-md">
+          <div className="bg-primary/[0.2] p-5 shadow-md">
             <p className=" text-lg text-justify">
               The Ethiopian Youth Council aims to foster the development of
               young leaders who can contribute to the development of Ethiopia.

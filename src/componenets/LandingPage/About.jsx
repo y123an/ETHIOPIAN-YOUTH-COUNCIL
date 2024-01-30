@@ -1,11 +1,12 @@
 import React from "react";
 import { heroImage1, heroImage2 } from "../../assets/images";
+import { Link } from "react-router-dom";
 
 const About = () => {
   return (
     <div className="flex flex-col items-center text-justify h-[600px] p-10 gap-5 ">
       <div className="flex">
-        <h1 className="text-3xl p-2 border-b-4 capitalize border-primary">
+        <h1 className="text-3xl p-2 border-b-4 head-font capitalize border-primary">
           About Us
         </h1>
       </div>
@@ -30,7 +31,12 @@ const About = () => {
           </p>
         </div>
         <div className="flex justify-end">
-          <button className="py-3 px-6 bg-primary text-white">Read More</button>
+          <Link
+            to={"/our-council/history"}
+            className="py-2 px-6 bg-primary transition ease-in-out delay-150  hover:-translate-y-1 hover:border-primary hover:text-black hover:border hover:bg-white duration-300 text-white"
+          >
+            Read More
+          </Link>
         </div>
       </div>
       <div className="flex justify-center items-center mt-9">

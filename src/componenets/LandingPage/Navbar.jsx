@@ -12,10 +12,16 @@ const Navbar = () => {
   return (
     <div className="flex justify-around font-light items-center bg-[#ECF0F1]   w-full text-black">
       <div className="flex w-full items-center  justify-around z-30 ">
-        <Link to={"/"}>
-          <img src={logo} alt="logo" className="w-[80px]" />
+        <Link to={"/"} className="flex items-center gap">
+          <img src={logo} alt="logo" className="w-[100px]" />
+          <div className=" text-primary">
+            <h1>የኢትዮጲያ ወጣቶች ምክር ቤት</h1>
+            <h1 className="uppercase font-bold head-font">
+              Ethiopian Youth Council
+            </h1>
+          </div>
         </Link>
-        <div className="flex gap-4 text-[14px]   items-center rounded-md">
+        <div className="flex gap-10 text-[14px] border-s-2 border-black  shadow-lg p-4 justify-center items-center">
           <motion.button
             whileHover={{
               scale: 1.2,
@@ -56,25 +62,21 @@ const Navbar = () => {
               initial={{ opacity: 0, y: -100 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              className={`absolute bg-[#ECF0F1] rounded-md top-[23px] ${seeOurCoucil}`}
+              className={`absolute bg-[#ECF0F1]  top-[23px] ${seeOurCoucil}`}
               onMouseEnter={() => setSeeOurCoucil("flex")}
             >
-              <div className="flex flex-col w-[150px] items-start px-4 py-6">
+              <div className="flex flex-col w-[120px] justify-center items-start px-4 py-6">
                 <div className="text-black flex items-center gap-2">
-                  <TiArrowRightOutline size={14} />
                   <Link to={"/our-council/history"}>History</Link>
                 </div>
                 <div className="text-black flex items-center gap-2">
-                  <TiArrowRightOutline size={14} />
-                  <Link to={"/our-council/mission"}>Our Mission</Link>
-                </div>
-                <div className="text-black flex items-center gap-2">
-                  <TiArrowRightOutline size={14} />
                   <Link to={"/our-council/vision"}>Our Vision</Link>
                 </div>
                 <div className="text-black flex items-center gap-2">
-                  <TiArrowRightOutline size={14} />
                   <Link to={"/our-council/leadership"}>Leadership</Link>
+                </div>
+                <div className="text-black flex items-center gap-2">
+                  <Link to={"/our-council/mission"}>Our Mission</Link>
                 </div>
               </div>
             </motion.div>
@@ -129,24 +131,20 @@ const Navbar = () => {
               initial={{ opacity: 0, y: -100 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              className={`absolute bg-[#ECF0F1] rounded-md top-[20px] ${seeNews}`}
+              className={`absolute bg-[#ECF0F1]  top-[20px] ${seeNews}`}
               onMouseEnter={() => setSeeNews("flex")}
             >
               <div className="flex flex-col items-start px-4 py-6">
-                <div className="text-black flex items-center gap-2">
-                  <TiArrowRightOutline size={14} />
+                <div className="text-black w-[100px] flex items-center gap-2">
                   <Link to={"/news"}>News</Link>
                 </div>
                 <div className="text-black flex items-center gap-2">
-                  <TiArrowRightOutline size={14} />
                   <Link to={"/publication"}>Publiction</Link>
                 </div>
                 <div className="text-black flex items-center gap-2">
-                  <TiArrowRightOutline size={14} />
                   <Link to={"/resources"}>Resources</Link>
                 </div>
                 <div className="text-black flex items-center gap-2">
-                  <TiArrowRightOutline size={14} />
                   <Link to={"/messages"}>Messages</Link>
                 </div>
               </div>

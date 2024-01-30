@@ -5,7 +5,7 @@ const LeaderShip = () => {
   return (
     <div className="py-10">
       <div className="flex">
-        <h1 className="text-3xl font-light py-2 border-b-4 border-primary">
+        <h1 className="text-3xl font-light py-2 border-b-4 border-primary head-font">
           Leadership
         </h1>
       </div>

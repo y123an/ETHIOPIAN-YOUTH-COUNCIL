@@ -10,7 +10,7 @@ import {
 import { motion } from "framer-motion";
 const CoreValues = () => {
   return (
-    <div className="bg-[#F2BC64]">
+    <div className="bg-primary/[0.1]">
       <div className="grid gap-20 p-10 rounded-3xl">
         <div className="flex justify-center">
           <motion.h1
@@ -25,7 +25,7 @@ const CoreValues = () => {
             transition={{
               delay: 0.5,
             }}
-            className="text-3xl text-center p-2 border-b-4 border-primary"
+            className="text-3xl text-center p-2 border-b-4 head-font border-primary"
           >
             Core Values
           </motion.h1>

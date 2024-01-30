@@ -6,7 +6,7 @@ const News = () => {
   return (
     <div className="grid  ">
       <div className="px-10 py-5 flex ">
-        <h1 className="text-2xl p border-b-4 p-2 border-primary">
+        <h1 className="text-2xl p border-b-4 p-2 head-font border-primary">
           News And Updates
         </h1>
       </div>
@@ -34,7 +34,7 @@ const News = () => {
         />
       </div>
       <div className="flex justify-end p-10">
-        <button className="py-2 px-6 bg-primary transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 text-white">
+        <button className="py-2 px-6 bg-primary transition ease-in-out delay-150  hover:-translate-y-1 hover:border-primary hover:text-black hover:border hover:bg-white duration-300 text-white">
           More News
         </button>
       </div>

@@ -1,13 +1,14 @@
 import CountUp from "react-countup";
 const HeroContent = () => {
   return (
-    <div className="text-white h-full items-center flex gap-20">
-      <div className="grid gap-10">
-        <div>
-          <div className="text-[70px] font-light ">
-            Ethiopian Youth <br></br>Council
+    <div className="text-white h-full items-center justify-start flex">
+      <div className="flex flex-col gap-10 w-[900px]">
+        <div className="flex flex-col ">
+          <div className="text-[50px] head-font font-light capitalize ">
+            Empowering 40 Million Leading Youth Representative and Partner to
+            1500+ Organizations!
           </div>
-          <div className="bg-black/[0.4] p-5 border-s-4 border-primary">
+          <div className="bg-black/[0.4] w-[500px] p-5 border-s-4  border-primary">
             <h1 className="text-2xl font-extralight">
               Empowered Youth For Empowered Ethiopia
             </h1>
@@ -20,7 +21,7 @@ const HeroContent = () => {
           </button>
         </div>
       </div>
-      <div>
+      {/* <div>
         <div className="flex flex-col justify-center items-center font-light">
           <div className="gap-5 ml-[200px]">
             <div className="flex justify-start">
@@ -52,7 +53,7 @@ const HeroContent = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

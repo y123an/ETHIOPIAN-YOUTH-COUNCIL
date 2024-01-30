@@ -25,9 +25,6 @@ const OurHistory = () => {
           <History />
         </div>
       </div>
-      {/* <div>
-        <Objectives />
-      </div> */}
       <div>
         <Footer />
       </div>

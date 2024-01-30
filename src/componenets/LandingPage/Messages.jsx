@@ -4,12 +4,14 @@ const Messages = () => {
   return (
     <div className="p-[100px] grid gap-5">
       <div className="flex">
-        <h1 className="text-2xl py-2 border-primary border-b-4">Messages</h1>
+        <h1 className="text-2xl py-2 border-primary border-b-4 head-font">
+          Messages
+        </h1>
       </div>
       <div className="flex flex-col justify-center items-center gap-20">
         <div className="flex gap-20 justify-around w-full">
           <div className="grid w-[700px] bg-white shadow-lg p-5 border-s-4 gap-5 border-red-600">
-            <h2 className="text-2xl font-mono capitalize underline-offset-8 underline">
+            <h2 className="text-2xl head-font capitalize underline-offset-8 underline">
               Message from the president
             </h2>
             <p>
@@ -28,7 +30,7 @@ const Messages = () => {
               <p>PRESIDENT</p>
             </div>
           </div>
-          <div className="bg-primary/[0.5] rounded-md shadow-md">
+          <div className="bg-primary/[0.1] shadow-lg rounded-md">
             <img src={presidant} alt="" className="w-[700px]" />
           </div>
         </div>
@@ -48,12 +50,12 @@ const Messages = () => {
             }}
             className="w-full flex gap-20"
           >
-            <div className="bg-primary/[0.5] rounded-md shadow-md">
+            <div className="bg-primary/[0.5] rounded-md shadow-lg">
               <img src={minister} alt="" className="w-[500px]" />
             </div>
             <div className="grid">
               <div className="w-[500px] flex flex-col h-[300px] shadow-lg gap-6 bg-white p-5 border-s-4 border-red-600">
-                <h2 className="text-2xl font-mono underline-offset-8 underline">
+                <h2 className="text-2xl head-font underline-offset-8 underline">
                   Message From the Minister
                 </h2>
                 <p>
@@ -67,7 +69,7 @@ const Messages = () => {
                 </div>
               </div>
               <div className=" flex flex-col w-[500px] gap-6 bg-white p-5 border-s-4 border-red-600">
-                <h2 className="text-2xl font-mono capitalize underline-offset-8 underline">
+                <h2 className="text-2xl head-font capitalize underline-offset-8 underline">
                   Message From the State minister
                 </h2>
                 <p>

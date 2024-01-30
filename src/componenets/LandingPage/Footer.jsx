@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="flex p-5 text-sm gap-32 justify-center items-center bg-black text-white">
+    <div className="flex p-5 text-sm gap-32 justify-center items-center bg-[#034B64]/90 text-white  border-t-2 ">
       <div className="flex gap-20">
         <div>
           <img src={logo} alt="" className="w-[150px]" />
@@ -99,7 +99,9 @@ const Footer = () => {
           <input type="text" placeholder="Your email address" className="p-2" />
 
           <div>
-            <button className="bg-primary rounded-md p-2">Sign Up</button>
+            <button className="bg-slate-400 text-black  shadow-lg p-2">
+              Sign Up
+            </button>
           </div>
         </div>
       </div>

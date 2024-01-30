@@ -20,7 +20,7 @@ const History = () => {
         className="w-[700px] grid gap-10"
       >
         <div className="flex">
-          <h1 className="font-light text-3xl py-3 border-b-4 border-primary">
+          <h1 className="font-light text-3xl py-3 border-b-4 head-font border-primary">
             Introduction
           </h1>
         </div>

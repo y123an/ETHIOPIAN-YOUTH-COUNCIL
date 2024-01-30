@@ -11,10 +11,8 @@ import News from "../componenets/LandingPage/News";
 const LandingPage = () => {
   return (
     <div>
-      <div className="">
-        <div>
-          <Navbar />
-        </div>
+      <div>
+        <Navbar />
       </div>
       <div>
         <Hero />

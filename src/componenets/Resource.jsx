@@ -14,7 +14,9 @@ const Resource = () => {
   return (
     <div className="grid gap-10">
       <div className="flex">
-        <h1 className="text-2xl border-b-4 border-primary p-2">Resources</h1>
+        <h1 className="text-2xl border-b-4 border-primary p-2 head-font">
+          Resources
+        </h1>
       </div>
       <div className="grid grid-cols-4 gap-5">
         {Resources?.map((resource, index) => (

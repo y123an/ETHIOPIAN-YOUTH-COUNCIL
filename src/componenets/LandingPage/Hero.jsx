@@ -47,8 +47,8 @@ const Hero = () => {
           <img src={heroImage4} alt="img" className="w-[100%] object-center " />
         </SwiperSlide>
       </Swiper>
-      <div className="bg-black/[0.3] absolute w-full top-20 h-[90vh] z-10 "></div>
-      <div className="absolute w-full flex justify-center items-center top-20 h-[90vh] z-20">
+      <div className="bg-gradient-to-r from-black/[0.5] from-60% white via-30% absolute w-full top-24 h-[90vh] z-10 "></div>
+      <div className="absolute w-full  px-40 items-center top-32 h-[90vh] z-20">
         <HeroContent />
       </div>
     </div>
