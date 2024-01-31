@@ -10,7 +10,7 @@ const Messages = () => {
       </div>
       <div className="flex flex-col justify-center items-center gap-20">
         <div className="flex gap-20 justify-around w-full">
-          <div className="grid w-[700px] bg-white shadow-lg p-5 border-s-4 gap-5 border-red-600">
+          <div className="grid w-[700px] bg-white shadow-lg p-5 border-s-4 gap-5 border-black">
             <h2 className="text-2xl head-font capitalize underline-offset-8 underline">
               Message from the president
             </h2>
@@ -54,7 +54,7 @@ const Messages = () => {
               <img src={minister} alt="" className="w-[500px]" />
             </div>
             <div className="grid">
-              <div className="w-[500px] flex flex-col h-[300px] shadow-lg gap-6 bg-white p-5 border-s-4 border-red-600">
+              <div className="w-[500px] flex flex-col h-[300px] shadow-lg gap-6 bg-white p-5 border-s-4 border-black">
                 <h2 className="text-2xl head-font underline-offset-8 underline">
                   Message From the Minister
                 </h2>
@@ -68,7 +68,7 @@ const Messages = () => {
                   <p>Minister of Women and Social Affairs</p>
                 </div>
               </div>
-              <div className=" flex flex-col w-[500px] gap-6 bg-white p-5 border-s-4 border-red-600">
+              <div className=" flex flex-col w-[500px] gap-6 bg-white p-5 border-s-4 border-black">
                 <h2 className="text-2xl head-font capitalize underline-offset-8 underline">
                   Message From the State minister
                 </h2>

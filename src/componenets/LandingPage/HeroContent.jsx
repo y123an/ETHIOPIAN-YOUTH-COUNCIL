@@ -1,4 +1,5 @@
-import CountUp from "react-countup";
+// import CountUp from "react-countup";
+import { Link } from "react-router-dom";
 const HeroContent = () => {
   return (
     <div className="text-white h-full items-center justify-start flex">
@@ -15,8 +16,13 @@ const HeroContent = () => {
           </div>
         </div>
         <div className=" flex gap-6">
-          <button className="p-5 border border-primary">More About Us</button>
-          <button className="p-5 border border-primary bg-primary">
+          <Link
+            to={"/our-council/history"}
+            className="p-5 bg-inherit border-primary border-2 transition ease-in-out delay-150  hover:-translate-y-1 hover:border-primary hover:text-black hover:border hover:bg-white duration-300 text-white"
+          >
+            More About Us
+          </Link>
+          <button className="p-5 bg-primary transition ease-in-out delay-150  hover:-translate-y-1 hover:border-primary hover:text-black hover:border hover:bg-white duration-300 text-white">
             Become A Member
           </button>
         </div>

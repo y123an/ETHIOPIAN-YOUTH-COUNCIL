@@ -23,10 +23,9 @@ const Resource = () => {
           <PdfCard
             key={index}
             name={resource.name}
-            img={resource.thumbnail?.data}
-            id={resource.id}
-            data={resource.content.data}
-            fileName={resource.filename}
+            img={resource.thumbnail_file_name}
+            filepath={"resources"}
+            pdf={resource.pdf_file_name}
           />
         ))}
       </div>

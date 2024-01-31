@@ -15,7 +15,7 @@ const About = () => {
           <p>
             The Ethiopian Youth Council is a statutory organization established
             according to the National Youth Policy of Ethiopia on April 02,
-            2023.dedicated to empowering Ethiopian youth and promoting their
+            2023. Dedicated to empowering Ethiopian youth and promoting their
             active participation in the country's social, economic, and
             political development.
           </p>

@@ -17,6 +17,18 @@ const siteStore = (set) => ({
         console.log(err);
       });
   },
+  getPublication: async () => {
+    await Axios({
+      method: "get",
+      url: "publication",
+    })
+      .then((res) => {
+        set({ publications: res.data.publication });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
 });
 
 export const useSiteStore = create(

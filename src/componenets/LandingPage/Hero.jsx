@@ -15,6 +15,7 @@ import "swiper/css/autoplay";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import HeroContent from "./HeroContent";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
@@ -47,10 +48,24 @@ const Hero = () => {
           <img src={heroImage4} alt="img" className="w-[100%] object-center " />
         </SwiperSlide>
       </Swiper>
-      <div className="bg-gradient-to-r from-black/[0.5] from-60% white via-30% absolute w-full top-24 h-[90vh] z-10 "></div>
-      <div className="absolute w-full  px-40 items-center top-32 h-[90vh] z-20">
+      <div className="bg-gradient-to-r from-black/[0.25] from-60% white via-30% absolute w-full top-24 h-[90vh] z-10 "></div>
+      <motion.div
+        initial={{
+          x: -300,
+          opacity: 0,
+        }}
+        whileInView={{
+          x: 0,
+          opacity: 1,
+        }}
+        transition={{
+          // delay: 0.2,
+          type: "tween",
+        }}
+        className="absolute w-full transition-alls	   px-40 items-center top-32 h-[90vh] z-20"
+      >
         <HeroContent />
-      </div>
+      </motion.div>
     </div>
   );
 };
