@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSiteStore } from "../../context/siteStore";
 import Pagination from "../Pagination";
-import OrganizationCard from "./organizationCard";
+import OrganizationCard from "./OrganizationCard";
 import { GrSearchAdvanced } from "react-icons/gr";
 
 const Organization = () => {
