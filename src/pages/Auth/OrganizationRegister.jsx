@@ -20,8 +20,34 @@ export default function OrganizationRegister() {
         email,
         password,
       })
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
+        .then((res) => {
+          toast.success("successfully registered", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+          localStorage.setItem("org-token", res.data.token);
+          navigate("/organization/complete-profile");
+        })
+        .catch((err) => {
+          toast.warn(err.response.data.error, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+        });
     } else {
       toast.warn("Password Dont Match!", {
         position: "top-right",

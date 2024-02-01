@@ -21,6 +21,8 @@ import Resources from "./pages/Resources";
 import Publication from "./pages/Publication";
 import UploadResources from "./pages/Dashboard/Resources";
 import UploadPublication from "./pages/Dashboard/Publication";
+import Organization from "./pages/Organization";
+import OrganizationCompleteProfile from "./pages/Organization/CompleteProfile";
 
 function App() {
   return (
@@ -36,6 +38,11 @@ function App() {
         <Route path="/messages" element={<Messages />} />
         <Route path="/resources" element={<Resources />} />
         <Route path="/publication" element={<Publication />} />
+        <Route path="/organization" element={<Organization />} />
+        <Route
+          path="/organization/complete-profile"
+          element={<OrganizationCompleteProfile />}
+        />
         <Route element={<AdminPrivateRoutes />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/youth" element={<Youth />} />

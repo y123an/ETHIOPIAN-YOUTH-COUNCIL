@@ -1,10 +1,11 @@
 import { create } from "zustand";
 import Axios from "../middlewares/Axios";
-import { Resources } from "../utils/constants";
+import { organizations } from "../utils/constants";
 import { persist } from "zustand/middleware";
 const siteStore = (set) => ({
   Resources: null,
   publications: null,
+  organizations: organizations,
   getResources: async () => {
     await Axios({
       method: "get",

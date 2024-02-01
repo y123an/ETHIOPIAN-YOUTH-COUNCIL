@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { logo } from "../../assets/images";
 import { Link, useLocation } from "react-router-dom";
 import { color, motion } from "framer-motion";
-import { TiArrowRightOutline } from "react-icons/ti";
-import ArrowDownIcon from "@heroicons/react/24/solid/ArrowDownIcon";
+
 import { FaArrowCircleDown, FaArrowDown } from "react-icons/fa";
+import { MdArrowDropDown } from "react-icons/md";
+
 const Navbar = () => {
   const { pathname } = useLocation();
   const [seeNews, setSeeNews] = useState("hidden");
   const [seeOurCoucil, setSeeOurCoucil] = useState("hidden");
+  const [seeFromCouncil, setSeeFromCouncil] = useState("hidden");
   return (
     <div className="flex justify-around font-light items-center bg-[#ECF0F1]   w-full text-black">
       <div className="flex w-full items-center  justify-around z-30 ">
@@ -51,12 +53,9 @@ const Navbar = () => {
               setSeeOurCoucil("hidden");
             }}
           >
-            <Link
-              to={"/our-council/history"}
-              className="flex items-center gap-2"
-            >
+            <Link to={"/our-council/history"} className="flex items-center ">
               Our Council
-              <FaArrowDown size={13} />
+              <MdArrowDropDown size={20} />
             </Link>
             <motion.div
               initial={{ opacity: 0, y: -100 }}
@@ -81,16 +80,42 @@ const Navbar = () => {
               </div>
             </motion.div>
           </motion.button>
-          <motion.button
+          <motion.div
             whileHover={{
               scale: 1.2,
               textShadow: "0px 0px 8px rgb(255,255,255)",
               boxShadow: "0px 0px 8px rgb(255,255,255)",
             }}
-            className="ps-1"
+            onMouseLeave={() => setSeeFromCouncil("hidden")}
+            onMouseEnter={() => setSeeFromCouncil("flex")}
+            className="z-20 re"
           >
-            <p>From Coucil</p>
-          </motion.button>
+            <motion.button className="ps-1">
+              <div className="flex gap- items-center justify-center">
+                <p>From Council</p>
+                <MdArrowDropDown size={20} />
+              </div>
+            </motion.button>
+            <motion.div
+              initial={{ opacity: 0, y: -100 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              className={`absolute bg-[#ECF0F1]  top-[20px] ${seeFromCouncil}`}
+              onMouseEnter={() => setSeeFromCouncil("flex")}
+            >
+              <div className="flex flex-col items-start px-4 py-6">
+                <div className="text-black w-[100px] flex items-center gap-2">
+                  <Link to={"/organization"}>Organizations</Link>
+                </div>
+                <div className="text-black flex items-center gap-2">
+                  <Link to={"/opportunity"}>Opportunities</Link>
+                </div>
+                <div className="text-black flex items-center gap-2">
+                  <Link to={"/resources"}>Resources</Link>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
           <motion.button
             whileHover={{
               scale: 1.2,
@@ -122,9 +147,9 @@ const Navbar = () => {
             className="z-20 re"
           >
             <motion.button className="ps-1">
-              <div className="flex gap-1 items-center justify-center">
+              <div className="flex gap- items-center justify-center">
                 <p>News And Media</p>
-                <FaArrowDown size={13} />
+                <MdArrowDropDown size={20} />
               </div>
             </motion.button>
             <motion.div
