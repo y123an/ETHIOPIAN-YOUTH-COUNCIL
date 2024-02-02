@@ -47,7 +47,7 @@ export const items = [
   },
   {
     title: "Resources",
-    path: "/upload-resources",
+    path: "/admin/resources",
     icon: (
       <SvgIcon fontSize="small">
         <UserIcon />
@@ -56,7 +56,7 @@ export const items = [
   },
   {
     title: "Publication",
-    path: "/upload-publication",
+    path: "/admin/publication",
     icon: (
       <SvgIcon fontSize="small">
         <UserIcon />

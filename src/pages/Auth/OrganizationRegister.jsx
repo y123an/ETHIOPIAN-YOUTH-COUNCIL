@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { authBg } from "../../assets/images";
 import { useNavigate } from "react-router-dom";
@@ -32,6 +32,7 @@ export default function OrganizationRegister() {
             theme: "light",
             transition: Bounce,
           });
+          console.log(res);
           localStorage.setItem("org-token", res.data.token);
           navigate("/organization/complete-profile");
         })
