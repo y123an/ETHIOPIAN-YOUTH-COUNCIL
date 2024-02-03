@@ -1,59 +1,98 @@
-import React from "react";
-import MaterialTable from "material-table";
+import DataTable from "react-data-table-component";
+import { useAdminStore } from "../../../context/adminStore";
+import { useEffect } from "react";
 
 const YouthList = () => {
-  // Sample data, replace this with your actual data
-  const data = [
-    {
-      id: 1,
-      fname: "John",
-      lname: "Doe",
-      gender: "Male",
-      age: 25,
-      DOB: "1999-01-01",
-      nationality: "US",
-      city: "New York",
-      country: "USA",
-      address: "123 Main St",
-      education: "Bachelor's Degree",
-      phone: "123-456-7890",
-      bio: "Lorem ipsum",
-      email: "john.doe@example.com",
-    },
-    // Add more youth data as needed
-  ];
+  const youth = useAdminStore((store) => store.youth);
+  const getYouth = useAdminStore((store) => store.getYouth);
 
+  useEffect(() => {
+    getYouth();
+  }, []);
   // Column definitions
   const columns = [
-    { title: "First Name", field: "fname" },
-    { title: "Last Name", field: "lname" },
-    { title: "Gender", field: "gender" },
-    { title: "Age", field: "age", type: "numeric" },
-    { title: "DOB", field: "DOB", type: "date" },
-    { title: "Nationality", field: "nationality" },
-    { title: "City", field: "city" },
-    { title: "Country", field: "country" },
-    { title: "Address", field: "address" },
-    { title: "Education", field: "education" },
-    { title: "Phone", field: "phone" },
-    { title: "Bio", field: "bio" },
-    { title: "Email", field: "email" },
+    { name: "id", selector: (row) => row.id, sortable: true, label: "ID" },
+    {
+      name: "fname",
+      selector: (row) => row.fname,
+      sortable: true,
+      label: "First Name",
+    },
+    {
+      name: "lname",
+      selector: (row) => row.lname,
+      sortable: true,
+      label: "Last Name",
+    },
+    {
+      name: "gender",
+      selector: (row) => row.gender,
+      sortable: true,
+      label: "Gender",
+    },
+    { name: "age", selector: (row) => row.age, sortable: true, label: "Age" },
+    { name: "DOB", selector: (row) => row.DOB, sortable: true, label: "DOB" },
+    {
+      name: "nationality",
+      selector: (row) => row.nationality,
+      sortable: true,
+      label: "Nationality",
+    },
+    {
+      name: "city",
+      selector: (row) => row.city,
+      sortable: true,
+      label: "City",
+    },
+    {
+      name: "country",
+      selector: (row) => row.country,
+      sortable: true,
+      label: "Country",
+    },
+    {
+      name: "address",
+      selector: (row) => row.address,
+      sortable: true,
+      label: "Address",
+    },
+    {
+      name: "education",
+      selector: (row) => row.education,
+      sortable: true,
+      label: "Education",
+    },
+    {
+      name: "phone",
+      selector: (row) => row.phone,
+      sortable: true,
+      label: "Phone",
+    },
+    { name: "bio", selector: (row) => row.bio, sortable: true, label: "Bio" },
+    {
+      name: "email",
+      selector: (row) => row.email,
+      sortable: true,
+      label: "Email",
+    },
   ];
 
   return (
-    <div style={{ maxWidth: "100%" }}>
-      <MaterialTable
-        title="Youth List"
-        columns={columns}
-        data={data}
-        options={{
-          sorting: true,
-          search: true,
-          paging: true,
-          pageSize: 10,
-          pageSizeOptions: [5, 10, 20],
-        }}
-      />
+    <div className="p-10">
+      <h1 className="text-3xl font-bold mb-4">Youth </h1>
+      <div className="shadow-2xl p-2 rounded-md">
+        <DataTable
+          title="Youth List"
+          columns={columns}
+          data={youth}
+          pagination
+          paginationPerPage={10}
+          paginationRowsPerPageOptions={[5, 10, 20]}
+          highlightOnHover
+          pointerOnHover
+          responsive
+        />
+      </div>
     </div>
   );
 };

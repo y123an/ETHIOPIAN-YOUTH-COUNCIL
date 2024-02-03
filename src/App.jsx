@@ -6,10 +6,9 @@ import OurMission from "./pages/OurMission";
 import OurVision from "./pages/OurVision";
 import Contact from "./pages/Contact";
 import OurTeam from "./pages/OurTeam";
-import Dashboard from "./pages/Dashboard/Dashboard";
+
 import Youth from "./pages/Dashboard/Youth";
 import Companies from "./pages/Dashboard/Companies";
-import Account from "./pages/Dashboard/Account";
 import Login from "./pages/Auth/Login";
 import YouthRegister from "./pages/Auth/YouthRegister";
 import OrganizationRegister from "./pages/Auth/OrganizationRegister";
@@ -18,6 +17,7 @@ import News from "./pages/News";
 import Messages from "./pages/Messages";
 import Resources from "./pages/Resources";
 import Publication from "./pages/Publication";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import UploadResources from "./pages/Dashboard/AddResources";
 import UploadPublication from "./pages/Dashboard/AddPublication";
 import Organization from "./pages/Organization";
@@ -50,10 +50,9 @@ function App() {
           element={<YouthCompleteProfile />}
         />
         <Route element={<AdminPrivateRoutes />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/youth" element={<Youth />} />
-          <Route path="/companies" element={<Companies />} />
-          <Route path="/account" element={<Account />} />
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/youth" element={<Youth />} />
+          <Route path="/admin/organization" element={<Companies />} />
           <Route path="/admin/upload-resources" element={<UploadResources />} />
           <Route
             path="/admin/upload-publication"

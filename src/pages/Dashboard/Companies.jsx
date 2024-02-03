@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DashboardLayout from "../../layouts/Dashboard/Layout";
 import {
   AiOutlineSearch,
@@ -6,6 +6,7 @@ import {
   AiOutlineDownload,
 } from "react-icons/ai";
 import { IoMdAddCircleOutline } from "react-icons/io";
+import { useAdminStore } from "../../context/adminStore";
 
 const organizationsData = [
   {
@@ -33,8 +34,14 @@ const organizationsData = [
 
 const Companies = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const organizations = useAdminStore((store) => store.organizations);
+  const getOrganization = useAdminStore((store) => store.getOrganization);
 
-  const filteredOrganizations = organizationsData.filter((organization) =>
+  useEffect(() => {
+    getOrganization();
+  }, []);
+
+  const filteredOrganizations = organizations?.filter((organization) =>
     organization.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -66,13 +73,13 @@ const Companies = () => {
         </div>
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {filteredOrganizations.map((organization) => (
+          {filteredOrganizations?.map((organization) => (
             <li key={organization.id}>
               <div className="bg-white p-6 rounded-md shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
                 <h2 className="text-xl font-semibold mb-2">
                   {organization.name}
                 </h2>
-                <p className="text-gray-600">{organization.description}</p>
+                <p className="text-gray-600">{organization.bio}</p>
                 <div className="flex justify-end mt-4">
                   <button
                     className="text-gray-500 hover:text-blue-500 mr-2"
