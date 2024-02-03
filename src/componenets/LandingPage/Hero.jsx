@@ -62,7 +62,7 @@ const Hero = () => {
           // delay: 0.2,
           type: "tween",
         }}
-        className="absolute w-full transition-alls	   px-40 items-center top-32 h-[90vh] z-20"
+        className="absolute w-full transition-alls px-40 items-center top-32 h-[90vh] z-20"
       >
         <HeroContent />
       </motion.div>

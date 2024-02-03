@@ -6,9 +6,11 @@ const Dashboard = () => {
   return (
     <>
       <DashboardLayout>
-        <h1 className="text-2xl p-10 text-primary">Oveview</h1>
-        <div>
-          <OverviewDashboard />
+        <div className="p-5">
+          <h1 className="text-2xl text-primary">Oveview</h1>
+          <div>
+            <OverviewDashboard />
+          </div>
         </div>
       </DashboardLayout>
     </>

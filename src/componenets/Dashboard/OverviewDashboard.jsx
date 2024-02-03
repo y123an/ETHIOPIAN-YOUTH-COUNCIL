@@ -1,5 +1,5 @@
 // OverviewDashboard.js
-import React from "react";
+import React, { useEffect } from "react";
 import {
   FaUser,
   FaBuilding,
@@ -14,97 +14,141 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  PieChart,
+  Pie,
+  LineChart,
+  Line,
 } from "recharts";
+import StatCard from "./StatCard";
+import { useAdminStore } from "../../context/adminStore";
+import Dashboard from "../../pages/Dashboard/Dashboard";
 
 const OverviewDashboard = () => {
-  // Sample data for the 3D graph
+  // Sample data for the charts
   const data = [
-    { year: "2021", youthSignUp: 30 },
-    { year: "2022", youthSignUp: 50 },
-    { year: "2023", youthSignUp: 80 },
-    { year: "2024", youthSignUp: 120 },
+    { month: "1", youthSignUp: 30 },
+    { month: "2", youthSignUp: 50 },
+    { month: "3", youthSignUp: 80 },
+    { month: "4", youthSignUp: 120 },
   ];
 
-  // Sample data for latest posts
-  const latestPosts = [
-    { title: "New Event Announcement", date: "2024-02-01" },
-    { title: "Volunteer Opportunity", date: "2024-01-25" },
-    // Add more posts as needed
+  const lineChartData = [
+    { month: "Jan", posts: 15 },
+    { month: "Feb", posts: 20 },
+    { month: "Mar", posts: 25 },
+    { month: "Apr", posts: 18 },
+    { month: "May", posts: 30 },
   ];
 
   // Calculate total youth, total organization, and total posts
-  const totalYouth = data.reduce((acc, entry) => acc + entry.youthSignUp, 0);
-  const totalOrganization = 150; // Replace with actual data
-  const totalPosts = latestPosts.length;
-
-  return (
-    <div className="container mx-auto mt-8">
-      {/* Total Statistics Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <StatCard icon={<FaUser />} label="Total Youth" value={totalYouth} />
-        <StatCard
-          icon={<FaBuilding />}
-          label="Total Organizations"
-          value={totalOrganization}
-        />
-        <StatCard
-          icon={<FaClipboardList />}
-          label="Total Posts"
-          value={totalPosts}
-        />
-      </div>
-
-      {/* 3D Graph Section */}
-      <div className="mt-8">
-        <h2 className="text-2xl font-semibold mb-4">
-          Youth Signups Over the Years
-        </h2>
-        {/* <BarChart
-          width={600}
-          height={300}
-          data={data}
-          margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="year" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="youthSignUp" fill="#8884d8" />
-        </BarChart> */}
-      </div>
-
-      {/* Latest Posts Section */}
-      <div className="mt-8">
-        <h2 className="text-2xl font-semibold mb-4">Latest Posts</h2>
-        <ul className="list-none p-0">
-          {latestPosts.map((post, index) => (
-            <li
-              key={index}
-              className="bg-white shadow-md rounded-md p-4 mb-4 flex items-center"
-            >
-              <div className="flex-shrink-0">
-                <FaCalendarAlt className="text-gray-500" />
-              </div>
-              <div className="ml-4">
-                <p className="text-gray-800 font-semibold">{post.title}</p>
-                <p className="text-gray-500">{post.date}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+  const dasboardOverView = useAdminStore((store) => store.dasboardOverView);
+  const getDashboardOverView = useAdminStore(
+    (store) => store.getDashboardOverView
   );
-};
+  const pieChartData = [
+    { name: "Youth", value: dasboardOverView?.youthCount },
+    { name: "Organizations", value: dasboardOverView?.organizationCount },
+  ];
 
-const StatCard = ({ icon, label, value }) => {
+  useEffect(() => {
+    getDashboardOverView();
+  }, []);
+
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const totalPosts = 65; // Replace with actual data
+
   return (
-    <div className="bg-white p-4 rounded-md shadow-md flex items-center">
-      <div className="flex-shrink-0">{icon}</div>
-      <div className="ml-4">
-        <p className="text-gray-800 font-semibold">{label}</p>
-        <p className="text-gray-500">{value}</p>
+    <div className="container mx-auto">
+      <div className="flex flex-col lg:flex-row lg:justify-between items-center">
+        {/* Total Statistics Section */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+          <StatCard
+            icon={<FaUser />}
+            label="Total Youth"
+            value={dasboardOverView?.youthCount}
+          />
+          <StatCard
+            icon={<FaBuilding />}
+            label="Total Organizations"
+            value={dasboardOverView?.organizationCount}
+          />
+          <StatCard
+            icon={<FaClipboardList />}
+            label="Total Posts"
+            value={totalPosts}
+          />
+        </div>
+        {/* Pie Chart Section */}
+        <div className="mt-8">
+          <h2 className="text-2xl font-semibold mb-4">Distribution of Users</h2>
+          <PieChart width={400} height={300}>
+            <Pie
+              data={pieChartData}
+              dataKey="value"
+              nameKey="name"
+              cx="50%"
+              cy="50%"
+              outerRadius={80}
+              fill="#8884d8"
+            />
+            <Tooltip />
+            <Legend />
+          </PieChart>
+        </div>
+      </div>
+      <div className="flex flex-col lg:flex-row lg:justify-between items-center">
+        {/* Line Chart Section */}
+        <div className="mt-8 lg:w-1/2">
+          <h2 className="text-2xl font-semibold mb-4">Monthly Post Activity</h2>
+          <div className="overflow-auto">
+            <LineChart width={600} height={300} data={lineChartData}>
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip />
+              <Line type="monotone" dataKey="posts" stroke="#82ca9d" />
+            </LineChart>
+          </div>
+        </div>
+        {/* 3D Bar Chart Section */}
+        <div className="mt-8 lg:w-1/2">
+          <h2 className="text-2xl font-semibold mb-4">
+            Youth Signups Over the Years
+          </h2>
+          <div className="overflow-auto">
+            <BarChart
+              width={600}
+              height={300}
+              data={dasboardOverView?.youthCountBasedOnMonth?.map(
+                ({ month, userCount }) => ({
+                  month: monthNames[month - 1],
+                  userCount,
+                })
+              )}
+              margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="userCount" fill="#4c51bf" />
+            </BarChart>
+          </div>
+        </div>
       </div>
     </div>
   );

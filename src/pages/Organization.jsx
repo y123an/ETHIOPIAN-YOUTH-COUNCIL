@@ -19,8 +19,8 @@ const Organization = () => {
           }
         />
       </div>
-      <div className="flex gap-[200px]">
-        <div className="">
+      <div className="flex justify-center gap-20">
+        <div className="pt-5">
           <FromCouncilNavigation />
         </div>
         <div className="">

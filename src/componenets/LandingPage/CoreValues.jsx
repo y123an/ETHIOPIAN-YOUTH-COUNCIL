@@ -8,133 +8,78 @@ import {
   volunter,
 } from "../../assets/icons";
 import { motion } from "framer-motion";
+
 const CoreValues = () => {
+  const coreValues = [
+    {
+      icon: empower,
+      title: "Empowerment",
+      description:
+        "Enable young people to take charge of their futures and make a positive impact",
+    },
+    {
+      icon: volunter,
+      title: "Volunteerism",
+      description:
+        "Encourages its members to give their time and energy to support the mission of the organization.",
+    },
+    {
+      icon: inclusive,
+      title: "Inclusiveness",
+      description:
+        "Embrace and respect diversity, ensuring equal opportunities for all",
+    },
+    {
+      icon: partisan,
+      title: "Non-partisanship",
+      description:
+        "Operates on a non-partisan basis, and does not align itself with any political party or ideology.",
+    },
+    {
+      icon: transparncy,
+      title: "Transparency",
+      description:
+        "Committed to transparency and accountability in all its activities and operations",
+    },
+    {
+      icon: innovation,
+      title: "Innovation",
+      description:
+        "Encourage creative thinking and innovation to drive positive change",
+    },
+  ];
+
   return (
-    <div className="bg-primary/[0.1]">
-      <div className="grid gap-20 p-10 rounded-3xl">
-        <div className="flex justify-center">
+    <div className="bg-white p-32 text-black">
+      <div className="container mx-auto">
+        <div className="text-center mb-10">
           <motion.h1
-            initial={{
-              y: 100,
-              opacity: 0,
-            }}
-            whileInView={{
-              y: 0,
-              opacity: 1,
-            }}
-            transition={{
-              delay: 0.5,
-            }}
-            className="text-3xl text-center p-2 border-b-4 head-font border-primary"
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="text-4xl sm:text-5xl font-bold p-2 border-b-4 head-font border-primary inline-block"
           >
-            Core Values
+            Our Core Values
           </motion.h1>
         </div>
-        <div className="flex gap-20 flex-col justify-center items-center text-center">
-          <div className="flex gap-20 ">
+        <div className="grid grid-cols-1 justify-items-center i sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          {coreValues.map((value, index) => (
             <motion.div
-              initial={{
-                y: 100,
-                opacity: 0,
-              }}
-              whileInView={{
-                y: 0,
-                opacity: 1,
-              }}
-              transition={{
-                delay: 0.5,
-              }}
-              className="flex justify-center gap-2 flex-col items-center"
+              key={index}
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5 + index * 0.1 }}
+              className="bg-secondary p-8 rounded-md text-center hover:shadow-lg transition-transform transform hover:scale-105"
             >
-              <img src={empower} alt="empower" className="w-[90px]" />
-              <h2 className="text-xl font-bold ">Empowerment</h2>
-              <p className="w-[250px] font-light">
-                Enable young people to take charge of their futures and make a
-                positive impact
-              </p>
+              <img
+                src={value.icon}
+                alt={value.title}
+                className="w-16 h-16 mb-4 mx-auto"
+              />
+              <h2 className="text-xl font-bold mb-2">{value.title}</h2>
+              <p className="text-sm text-gray-900">{value.description}</p>
             </motion.div>
-            <motion.div
-              initial={{
-                y: 100,
-                opacity: 0,
-              }}
-              whileInView={{
-                y: 0,
-                opacity: 1,
-              }}
-              transition={{
-                delay: 0.5,
-              }}
-              className="flex justify-center gap-2 flex-col items-center"
-            >
-              <img src={volunter} alt="volunter" className="w-[90px]" />
-              <h2 className="text-xl font-bold ">Volunteerism</h2>
-              <p className="w-[250px] font-light">
-                Encourages its members to give their time and energy to support
-                the mission of the organization.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{
-                y: 100,
-                opacity: 0,
-              }}
-              whileInView={{
-                y: 0,
-                opacity: 1,
-              }}
-              transition={{
-                delay: 0.5,
-              }}
-              className="flex justify-center gap-2 flex-col text-black items-center"
-            >
-              <img src={inclusive} alt="volunter" className="w-[90px]" />
-              <h2 className="text-xl font-bold ">Inclusiveness</h2>
-              <p className="w-[250px]  font-light">
-                Embrace and respect diversity, ensuring equal opportunities for
-                all
-              </p>
-            </motion.div>
-          </div>
-          <motion.div
-            initial={{
-              y: 100,
-              opacity: 0,
-            }}
-            whileInView={{
-              y: 0,
-              opacity: 1,
-            }}
-            transition={{
-              delay: 0.5,
-            }}
-            className="flex gap-20"
-          >
-            <div className="flex justify-center gap-2 flex-col items-center">
-              <img src={partisan} alt="empower" className="w-[90px]" />
-              <h2 className="text-xl font-bold ">Non-partisanship</h2>
-              <p className="w-[250px] font-light">
-                Operates on a non-partisan basis, and does not align itself with
-                any political party or ideology.
-              </p>
-            </div>
-            <div className="flex justify-center flex-col items-center">
-              <img src={transparncy} alt="empower" className="w-[90px]" />
-              <h2 className="text-xl font-bold ">Transparency</h2>
-              <p className="w-[250px] font-light">
-                Committed to transparency and accountability in all its
-                activities and operations
-              </p>
-            </div>
-            <div className="flex justify-center flex-col items-center">
-              <img src={innovation} alt="empower" className="w-[90px]" />
-              <h2 className="text-xl font-bold capitalize ">innovation</h2>
-              <p className="w-[250px] font-light">
-                Encourage creative thinking and innovation to drive positive
-                change
-              </p>
-            </div>
-          </motion.div>
+          ))}
         </div>
       </div>
     </div>

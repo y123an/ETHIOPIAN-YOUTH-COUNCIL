@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useSiteStore } from "../../context/siteStore";
 import Pagination from "../Pagination";
 import OrganizationCard from "./OrganizationCard";
@@ -21,15 +21,60 @@ const Organization = () => {
   const firstContentIndex = lastContentIndex - contentPerPage;
 
   return (
-    <div className="w-[700px] grid gap-10">
-      <div className="flex">
+    <div className="w-full mx-auto p-4">
+      <div className="mb-8">
         <h1 className="font-light text-3xl py-3 border-b-4 head-font border-primary">
-          Organzitions
+          Organizations
         </h1>
       </div>
-      <div className="flex w-full justify-between gap-10">
-        <div className="w-[600px] grid gap-5">
-          <div className="grid divide-y-2">
+      <div className="flex flex-col md:flex-row gap-20">
+        <div className="w-full md:w-[40%]">
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col mt-4">
+              <p className="text-xl">Search</p>
+              <div className="flex items-center gap-2 rounded-md overflow-hidden bg-gray-100">
+                <input
+                  type="text"
+                  placeholder="Search organizations..."
+                  className="p-2 w-full focus:outline-none"
+                />
+                <button className="bg-blue-500 text-white p-2">
+                  <GrSearchAdvanced size={24} />
+                </button>
+              </div>
+            </div>
+            <div className="mt-4">
+              <div>
+                <p className="text-xl">Filter</p>
+                <div className="p-5 bg-white rounded-md shadow-md">
+                  <div className="space-y-2">
+                    <p className="font-semibold">Category</p>
+                    <div className="ml-5">
+                      <div className="flex items-center gap-2">
+                        <input type="checkbox" id="charity" />
+                        <label htmlFor="charity">Charity</label>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <input type="checkbox" id="education" />
+                        <label htmlFor="education">Education</label>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <input type="checkbox" id="health" />
+                        <label htmlFor="health">Health</label>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <input type="checkbox" id="environment" />
+                        <label htmlFor="environment">Environment</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="w-full md:w-[60%]">
+          <div className="grid gap-5">
             {organizations
               ?.slice(firstContentIndex, lastContentIndex)
               .map((organization, index) => (
@@ -48,46 +93,13 @@ const Organization = () => {
                 />
               ))}
           </div>
-          <div>
+          <div className="mt-4">
             <Pagination
               setCurrentPage={setCurrentPage}
               pages={pages}
               currentPage={currentPage}
               totalPages={totalPages}
             />
-          </div>
-        </div>
-        <div className="flex flex-col gap-10">
-          <div className="flex flex-col">
-            <p className="text-xl">Search</p>
-            <div className="flex items-center gap-2 rounded-md pr-2 bg-[#f3f3f3] ">
-              <input type="text" className="bg-[#f3f3f3] p-2" />
-              <GrSearchAdvanced size={24} />
-            </div>
-          </div>
-          <div>
-            <p className="text-xl">Fillter</p>
-            <div className="p-5 clear-start gap-1 grid bg-[#f3f3f3] rounded">
-              <p>Category</p>
-              <div className="ml-5">
-                <div className="flex items-center gap-2">
-                  <input type="checkbox" />
-                  <p>Charity</p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <input type="checkbox" />
-                  <p>Charity</p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <input type="checkbox" />
-                  <p>Charity</p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <input type="checkbox" />
-                  <p>Charity</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

@@ -47,7 +47,7 @@ const Companies = () => {
 
   return (
     <DashboardLayout>
-      <div className="max-w-full mx-auto p-4 sm:p-6 md:p-8">
+      <div className="w-full mx-auto p-4 sm:p-6 md:p-8">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold">Organization List</h1>
           <button

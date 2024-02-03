@@ -1,103 +1,52 @@
-// import CountUp from "react-countup";
+import CountUp from "react-countup";
 import { Link } from "react-router-dom";
+
 const HeroContent = () => {
   return (
-    <div className="text-white h-full items-center justify-start flex">
-      <div className="flex flex-col gap-10 w-[900px]">
-        <div className="flex flex-col ">
-          <div className="text-[50px] head-font font-light capitalize ">
-            Empowering 40 Million Leading Youth Representative and Partner to
-            1500+ Organizations!
-          </div>
-          <div className="bg-black/[0.4] w-[500px] p-5 border-s-4  border-primary">
-            <h1 className="text-2xl font-extralight">
-              Empowered Youth For Empowered Ethiopia
-            </h1>
-          </div>
-        </div>
-        <div className=" flex gap-6">
+    <div className="bg-gradient-to-b from-white/[.2] to-white/[.2] text-white min-h-screen flex flex-col justify-center items-center px-4 lg:px-20">
+      <div className="text-center mb-8">
+        <h1 className="text-2xl head-font md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4">
+          Empowering 40 Million Leading Youth Representative and Partner to
+          1500+ Organizations!
+        </h1>
+        <p className="bg-black text-xl md:text-2xl lg:text-4xl bg-opacity-50 p-2 md:p-4 lg:p-6 border-2 border-primary mb-4">
+          Empowered Youth For Empowered Ethiopia
+        </p>
+        <div className="flex flex-col gap-4 md:flex-row md:justify-center">
           <Link
             to={"/our-council/history"}
-            className="p-5 bg-inherit border-primary border-2 transition ease-in-out delay-150  hover:-translate-y-1 hover:border-primary hover:text-black hover:border hover:bg-white duration-300 text-white"
+            className="py-3 px-6 bg-white text-blue-800 font-semibold hover:bg-blue-800 hover:text-white transition duration-300 ease-in-out"
           >
             More About Us
           </Link>
-          <button className="p-5 bg-primary transition ease-in-out delay-150  hover:-translate-y-1 hover:border-primary hover:text-black hover:border hover:bg-white duration-300 text-white">
+          <Link
+            to={"/register-youth"}
+            className="py-3 px-6 bg-primary text-white font-semibold hover:bg-white hover:text-primary border-2 border-primary transition duration-300 ease-in-out"
+          >
             Become A Member
-          </button>
+          </Link>
         </div>
       </div>
-      {/* <div>
-        <div className="flex flex-col justify-center items-center font-light">
-          <div className="gap-5 ml-[200px]">
-            <div className="flex justify-start">
-              <p className="text-[22px] capitalize">
-                official Represenatative of
-              </p>
-            </div>
-            <div className="flex justify-center">
-              <p className="text-[90px]">
-                <CountUp start={2} end={40} duration={3} delay={0} />{" "}
-                <span>Million</span>+
-              </p>
-            </div>
-            <div className="flex justify-end">
-              <p className="text-[22px] capitalize font-">Youth</p>
-            </div>
-          </div>
-          <div className="gap-5 mr-[200px]">
-            <div className="flex">
-              <p className="text-[22px]">Partner Of</p>
-            </div>
-            <div className="flex justify-center">
-              <p className="text-[90px]">
-                <CountUp start={100} end={1500} duration={3} delay={0} />+
-              </p>
-            </div>
-            <div className="flex justify-end">
-              <p className="text-[22px] capitalize">Organization</p>
-            </div>
-          </div>
+      <div className="flex  gap-10">
+        <div className="mb-8">
+          <p className="text-base  md:text-lg capitalize mb-2">
+            Official Representative of
+          </p>
+          <p className="text-xl md:text-2xl lg:text-3xl font-bold mb-2">
+            <CountUp start={2} end={40} duration={3} delay={0} /> Million+
+          </p>
+          <p className="text-base md:text-lg capitalize mb-2">Youth</p>
         </div>
-      </div> */}
+        <div>
+          <p className="text-base mb-2">Partner Of</p>
+          <p className="text-xl md:text-2xl lg:text-3xl font-bold mb-2">
+            <CountUp start={100} end={1500} duration={3} delay={0} />+
+          </p>
+          <p className="text-base capitalize">Organization</p>
+        </div>
+      </div>
     </div>
   );
 };
 
 export default HeroContent;
-
-{
-  /* <div
-style={{
-  boxShadow: "0px 0px 10px rgb(255,255,255)",
-}}
-className="w-[700px] absolute z-10 bg-[#1975BE] rounded-lg border-primary border-2  text-white"
->
-<div className="flex flex-col">
-  <div className="flex justify-center">
-    <h1 className="text-[60px] w-full text-center  absolute -mt-[100px] z-10">
-      Ethiopian Youth Council
-    </h1>
-  </div>
-  <div className="flex justify-center py-10 gap-32">
-    <div className="flex flex-col justify-center items-center">
-      <p className="text-[18px] capitalize">
-        official Represenatative of
-      </p>
-      <p className="text-[40px]">
-        <CountUp start={2} end={40} duration={3} delay={0} />{" "}
-        <span>Million</span>+
-      </p>
-      <p className="text-[18px] capitalize">Youth</p>
-    </div>
-    <div className="flex flex-col justify-center text-center items-center">
-      <p className="text-[18px]">Partner Of</p>
-      <p className="text-[40px]">
-        <CountUp start={100} end={1500} duration={3} delay={0} />+
-      </p>
-      <p className="text-[18px] capitalize">Organization</p>
-    </div>
-  </div>
-</div>
-</div> */
-}

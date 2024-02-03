@@ -1,24 +1,22 @@
 import React from "react";
-import { heroImage3, heroImage4 } from "../../assets/images";
+import { heroImage4 } from "../../assets/images";
 
 const OurCouncilImage = ({ title, description }) => {
   return (
-    <div className="w-[100%] h-[400px]">
+    <div className="relative w-full h-[400px] overflow-hidden">
       <img
         src={heroImage4}
-        alt=""
-        className="w-full h-full object-center object-cover"
+        alt={title}
+        className="w-full h-full object-cover filter brightness-70"
       />
-      <div className="absolute bg-black/[0.4] h-[400px] w-full top-[100px]">
-        <div className="flex  items-center h-full p-[170px] font-light ">
-          <div className="flex border-s-8 border-b-8 p-5 gap-[200px] items-center">
-            <h1 className="capitalize text-white text-5xl p-10 head-font">
-              {title}
-            </h1>
-            <p className="capitalize text-2xl text-white w-[500px]">
-              {description}
-            </p>
-          </div>
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="text-center text-white">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold head-font capitalize mb-4">
+            {title}
+          </h1>
+          <p className="text-base md:text-xl lg:text-2xl text-white text-opacity-80 max-w-[600px] mx-auto">
+            {description}
+          </p>
         </div>
       </div>
     </div>

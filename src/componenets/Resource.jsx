@@ -10,7 +10,6 @@ const Resource = () => {
     getResources();
   }, []);
 
-  // console.log(Resources[0].thumbnail.data);
   return (
     <div className="grid gap-10">
       <div className="flex">
@@ -18,16 +17,20 @@ const Resource = () => {
           Resources
         </h1>
       </div>
-      <div className="grid grid-cols-4 gap-5">
-        {Resources?.map((resource, index) => (
-          <PdfCard
-            key={index}
-            name={resource.name}
-            img={resource.thumbnail_file_name}
-            filepath={"resources"}
-            pdf={resource.pdf_file_name}
-          />
-        ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+        {Resources?.length > 0 ? (
+          Resources.map((resource, index) => (
+            <PdfCard
+              key={index}
+              name={resource.name}
+              img={resource.thumbnail_file_name}
+              filepath={"resources"}
+              pdf={resource.pdf_file_name}
+            />
+          ))
+        ) : (
+          <p>No resources available</p>
+        )}
       </div>
     </div>
   );

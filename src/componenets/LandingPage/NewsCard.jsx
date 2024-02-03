@@ -1,37 +1,47 @@
-import React, { useState } from "react";
-import { heroImage } from "../../assets/images";
+import { useState } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 
 const NewsCard = ({ date, news, img, link }) => {
-  const [see, setSee] = useState("hidden");
+  const [see, setSee] = useState(false);
 
   return (
     <div
-      onMouseEnter={() => {
-        setSee("flex");
-      }}
-      onMouseLeave={() => {
-        setSee("hidden");
-      }}
-      className="w-[400px] items-center  flex flex-col  p-2 rounded-lg text-justify"
+      onMouseEnter={() => setSee(true)}
+      onMouseLeave={() => setSee(false)}
+      className="w-[400px] flex flex-col p-2 rounded-lg text-justify overflow-hidden"
     >
-      <div className="">
+      {/* Image Section */}
+      <div className="relative">
         <img
           src={img}
           alt=""
-          className="w-[400px] rounded-t-md transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-10 hover:bg-indigo-500 duration-300"
+          className="w-full rounded-t-md transition transform hover:scale-105 hover:bg-indigo-500 duration-300"
         />
+        {/* Overlay for transition effect */}
+        <div
+          className={`absolute inset-0 bg-indigo-500 opacity-0 transition-opacity ${
+            see ? "opacity-70" : ""
+          }`}
+        ></div>
       </div>
-      <div className="px-4 w-[300px] gap-2 grid shadow-2xl p-3 rounded-lg -mt-[50px] z-20 bg-white">
-        <div className="flex items-center gap-2">
+
+      {/* Content Section */}
+      <div className="px-4 w-full grid shadow-lg p-3 rounded-lg -mt-10 z-20 bg-white">
+        <div className="flex items-center gap-2 text-gray-600">
           <FaCalendarAlt />
           <span>{date}</span>
         </div>
-        <p className="font-bold">{news}</p>
+        <p className="font-bold text-gray-800">{news}</p>
+
+        {/* Read More Section */}
         <div
-          className={`flex justify-end ${see} animate-bounce transition ease-in-out delay-150`}
+          className={`flex justify-end opacity-0 transform translate-y-2 transition-opacity transition-transform ${
+            see ? "opacity-100 translate-y-0" : ""
+          }`}
         >
-          <button className="p-2 capitalize  text-primary">read more</button>
+          <button className="p-2 capitalize text-primary hover:underline">
+            read more
+          </button>
         </div>
       </div>
     </div>

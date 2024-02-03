@@ -17,8 +17,8 @@ const OurVision = () => {
           description={"ethiopian youth council's Vision and goals "}
         />
       </div>
-      <div className="flex gap-[200px]">
-        <div className="">
+      <div className="flex w-full flex-col md:flex-row md:items-start items-center justify-center gap-10">
+        <div className="pt-5">
           <OurCouncilNavigation />
         </div>
         <div>

@@ -1,195 +1,125 @@
 import React, { useState } from "react";
-import { logo } from "../../assets/images";
 import { Link, useLocation } from "react-router-dom";
-import { color, motion } from "framer-motion";
-
-import { FaArrowCircleDown, FaArrowDown } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import { MdArrowDropDown } from "react-icons/md";
+import { motion } from "framer-motion";
+import { logo } from "../../assets/images";
 
 const Navbar = () => {
   const { pathname } = useLocation();
-  const [seeNews, setSeeNews] = useState("hidden");
-  const [seeOurCoucil, setSeeOurCoucil] = useState("hidden");
-  const [seeFromCouncil, setSeeFromCouncil] = useState("hidden");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
-    <div className="flex justify-around font-light items-center bg-[#ECF0F1]   w-full text-black">
-      <div className="flex w-full items-center  justify-around z-30 ">
-        <Link to={"/"} className="flex items-center gap">
-          <img src={logo} alt="logo" className="w-[100px]" />
-          <div className=" text-primary">
-            <h1>የኢትዮጲያ ወጣቶች ምክር ቤት</h1>
-            <h1 className="uppercase font-bold head-font">
-              Ethiopian Youth Council
-            </h1>
+    <nav className="flex flex-col lg:flex-row justify-around items-center z-40 bg-[#ECF0F1] w-full text-black">
+      <div className="flex items-center gap-4 lg:gap-8 p-4">
+        <Link to={"/"} className="flex items-center gap-2">
+          <img src={logo} alt="" className="w-[70px]" />
+          <div>
+            <h1 className="text-primary font-bold">የኢትዮጲያ ወጣቶች ምክር ቤት</h1>
+            <p className="text-[#DFB683] font-bold">Ethiopian Youth Council</p>
           </div>
         </Link>
-        <div className="flex gap-10 text-[14px] border-s-2 border-black  shadow-lg p-4 justify-center items-center">
-          <motion.button
-            whileHover={{
-              scale: 1.2,
-              textShadow: "0px 0px 8px rgb(255,255,255)",
-              boxShadow: "0px 0px 8px rgb(255,255,255)",
-            }}
-            className={`${pathname === "/" && "border-b-4 border-primary"} `}
-          >
-            <Link to={"/"}>Home</Link>
-          </motion.button>
-          <motion.button
-            whileHover={{
-              scale: 1.2,
-              textShadow: "0px 0px 8px rgb(255,255,255)",
-              boxShadow: "0px 0px 8px rgb(255,255,255)",
-            }}
-            className={`${
-              pathname === "/our-council/history"
-                ? "border-b-4 border-primary"
-                : pathname === "/our-council/mission"
-                ? "border-b-4 border-primary"
-                : pathname === "/our-council/vision" &&
-                  "border-b-4 border-primary"
-            } ps-1`}
-            onMouseEnter={() => setSeeOurCoucil("flex")}
-            onMouseLeave={() => {
-              setSeeOurCoucil("hidden");
-            }}
-          >
-            <Link to={"/our-council/history"} className="flex items-center ">
-              Our Council
-              <MdArrowDropDown size={20} />
-            </Link>
-            <motion.div
-              initial={{ opacity: 0, y: -100 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              className={`absolute bg-[#ECF0F1]  top-[23px] ${seeOurCoucil}`}
-              onMouseEnter={() => setSeeOurCoucil("flex")}
-            >
-              <div className="flex flex-col w-[120px] justify-center items-start px-4 py-6">
-                <div className="text-black flex items-center gap-2">
-                  <Link to={"/our-council/history"}>History</Link>
-                </div>
-                <div className="text-black flex items-center gap-2">
-                  <Link to={"/our-council/vision"}>Our Vision</Link>
-                </div>
-                <div className="text-black flex items-center gap-2">
-                  <Link to={"/our-council/leadership"}>Leadership</Link>
-                </div>
-                <div className="text-black flex items-center gap-2">
-                  <Link to={"/our-council/mission"}>Our Mission</Link>
-                </div>
-              </div>
-            </motion.div>
-          </motion.button>
-          <motion.div
-            whileHover={{
-              scale: 1.2,
-              textShadow: "0px 0px 8px rgb(255,255,255)",
-              boxShadow: "0px 0px 8px rgb(255,255,255)",
-            }}
-            onMouseLeave={() => setSeeFromCouncil("hidden")}
-            onMouseEnter={() => setSeeFromCouncil("flex")}
-            className="z-20 re"
-          >
-            <motion.button className="ps-1">
-              <div className="flex gap- items-center justify-center">
-                <p>From Council</p>
-                <MdArrowDropDown size={20} />
-              </div>
-            </motion.button>
-            <motion.div
-              initial={{ opacity: 0, y: -100 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              className={`absolute bg-[#ECF0F1]  top-[20px] ${seeFromCouncil}`}
-              onMouseEnter={() => setSeeFromCouncil("flex")}
-            >
-              <div className="flex flex-col items-start px-4 py-6">
-                <div className="text-black w-[100px] flex items-center gap-2">
-                  <Link to={"/organization"}>Organizations</Link>
-                </div>
-                <div className="text-black flex items-center gap-2">
-                  <Link to={"/opportunity"}>Opportunities</Link>
-                </div>
-                <div className="text-black flex items-center gap-2">
-                  <Link to={"/resources"}>Resources</Link>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-          <motion.button
-            whileHover={{
-              scale: 1.2,
-              textShadow: "0px 0px 8px rgb(255,255,255)",
-              boxShadow: "0px 0px 8px rgb(255,255,255)",
-            }}
-            className="ps-1"
-          >
-            <p>Where We Are</p>
-          </motion.button>
-          <motion.button
-            whileHover={{
-              scale: 1.2,
-              textShadow: "0px 0px 8px rgb(255,255,255)",
-              boxShadow: "0px 0px 8px rgb(255,255,255)",
-            }}
-            className="ps-1"
-          >
-            <p>What We Do</p>
-          </motion.button>
-          <motion.div
-            whileHover={{
-              scale: 1.2,
-              textShadow: "0px 0px 8px rgb(255,255,255)",
-              boxShadow: "0px 0px 8px rgb(255,255,255)",
-            }}
-            onMouseLeave={() => setSeeNews("hidden")}
-            onMouseEnter={() => setSeeNews("flex")}
-            className="z-20 re"
-          >
-            <motion.button className="ps-1">
-              <div className="flex gap- items-center justify-center">
-                <p>News And Media</p>
-                <MdArrowDropDown size={20} />
-              </div>
-            </motion.button>
-            <motion.div
-              initial={{ opacity: 0, y: -100 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              className={`absolute bg-[#ECF0F1]  top-[20px] ${seeNews}`}
-              onMouseEnter={() => setSeeNews("flex")}
-            >
-              <div className="flex flex-col items-start px-4 py-6">
-                <div className="text-black w-[100px] flex items-center gap-2">
-                  <Link to={"/news"}>News</Link>
-                </div>
-                <div className="text-black flex items-center gap-2">
-                  <Link to={"/publication"}>Publiction</Link>
-                </div>
-                <div className="text-black flex items-center gap-2">
-                  <Link to={"/resources"}>Resources</Link>
-                </div>
-                <div className="text-black flex items-center gap-2">
-                  <Link to={"/messages"}>Messages</Link>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
 
-          <motion.button
-            whileHover={{
-              scale: 1.2,
-              textShadow: "0px 0px 8px rgb(255,255,255)",
-              boxShadow: "0px 0px 8px rgb(255,255,255)",
-            }}
-            className={`${
-              pathname == "/contact" && "border-b-4 border-primary"
-            } ps-1`}
-          >
-            <Link to={"/contact"}>Contact Us</Link>
-          </motion.button>
+        <div className="lg:hidden cursor-pointer" onClick={toggleMobileMenu}>
+          <FaBars size={24} />
         </div>
       </div>
+
+      <div
+        className={`lg:flex flex-col lg:flex-row gap-4 z-40 bg-[#ECF0F1] w-full md:w-auto lg:gap-8 ${
+          mobileMenuOpen ? "block" : "hidden"
+        } p-4`}
+      >
+        <NavLink to={"/"} label="Home" pathname={pathname} />
+        <DropdownNavLink
+          label="Our Council"
+          sublinks={[
+            { to: "/our-council/history", label: "History" },
+            { to: "/our-council/vision", label: "Our Vision" },
+            { to: "/our-council/leadership", label: "Leadership" },
+            { to: "/our-council/mission", label: "Our Mission" },
+          ]}
+          pathname={pathname}
+        />
+        <DropdownNavLink
+          label="From Council"
+          sublinks={[
+            { to: "/organization", label: "Organizations" },
+            { to: "/opportunity", label: "Opportunities" },
+            { to: "/resources", label: "Resources" },
+          ]}
+          pathname={pathname}
+        />
+        <NavLink
+          to={"/where-we-are"}
+          label="Where We Are"
+          pathname={pathname}
+        />
+        <NavLink to={"/what-we-do"} label="What We Do" pathname={pathname} />
+        <DropdownNavLink
+          label="News And Media"
+          sublinks={[
+            { to: "/news", label: "News" },
+            { to: "/publication", label: "Publication" },
+            { to: "/resources", label: "Resources" },
+            { to: "/messages", label: "Messages" },
+          ]}
+          pathname={pathname}
+        />
+        <NavLink to={"/contact"} label="Contact Us" pathname={pathname} />
+      </div>
+    </nav>
+  );
+};
+
+const NavLink = ({ to, label, pathname }) => (
+  <motion.button
+    whileHover={{
+      scale: 1.2,
+      textShadow: "0px 0px 8px rgb(255,255,255)",
+      boxShadow: "0px 0px 8px rgb(255,255,255)",
+    }}
+    className={`${pathname === to && "border-b-4 border-primary"}`}
+  >
+    <Link to={to}>{label}</Link>
+  </motion.button>
+);
+
+const DropdownNavLink = ({ label, sublinks, pathname }) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  return (
+    <div className="relative">
+      <motion.button
+        whileHover={{
+          scale: 1.2,
+          textShadow: "0px 0px 8px rgb(255,255,255)",
+          boxShadow: "0px 0px 8px rgb(255,255,255)",
+        }}
+        className={`ps-1 flex items-center`}
+        // onMouseEnter={() => setIsDropdownOpen(true)}
+        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+        // onMouseLeave={() => setIsDropdownOpen(false)}
+      >
+        {label}
+        <MdArrowDropDown size={20} />
+      </motion.button>
+
+      {isDropdownOpen && (
+        <div
+          className="relative md:absolute  flex flex-col  bg-[#ECF0F1] z-50 top-full font-light left-0 p-2 w-[150px] gap-2"
+          onMouseEnter={() => setIsDropdownOpen(true)}
+          onMouseLeave={() => setIsDropdownOpen(false)}
+        >
+          {sublinks.map(({ to, label }) => (
+            <NavLink key={to} to={to} label={label} pathname={pathname} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

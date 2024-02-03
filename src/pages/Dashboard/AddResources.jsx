@@ -5,7 +5,9 @@ const AddResources = () => (
   <>
     <DashboardLayout>
       <h1 className="text-2xl p-10 text-primary">Add Resources</h1>
-      <ResourcesUploadForm />
+      <div className="px-20">
+        <ResourcesUploadForm />
+      </div>
     </DashboardLayout>
   </>
 );

@@ -1,14 +1,18 @@
+import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import { useAdminStore } from "../../../context/adminStore";
-import { useEffect } from "react";
 
 const YouthList = () => {
   const youth = useAdminStore((store) => store.youth);
   const getYouth = useAdminStore((store) => store.getYouth);
+  const isLoading = useAdminStore((store) => store.isLoading);
+  const error = useAdminStore((store) => store.error);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     getYouth();
-  }, []);
+  }, [getYouth]);
+
   // Column definitions
   const columns = [
     { name: "id", selector: (row) => row.id, sortable: true, label: "ID" },
@@ -77,21 +81,47 @@ const YouthList = () => {
     },
   ];
 
+  // Custom filter function for search
+  const customFilter = (rows, searchTerm) => {
+    return rows.filter((row) => {
+      return Object.keys(row).some((key) => {
+        const value = row[key];
+        if (value) {
+          const lowerCaseValue = value.toString().toLowerCase();
+          return lowerCaseValue.includes(searchTerm.toLowerCase());
+        }
+        return false;
+      });
+    });
+  };
+
   return (
     <div className="p-10">
-      <h1 className="text-3xl font-bold mb-4">Youth </h1>
-      <div className="shadow-2xl p-2 rounded-md">
-        <DataTable
-          title="Youth List"
-          columns={columns}
-          data={youth}
-          pagination
-          paginationPerPage={10}
-          paginationRowsPerPageOptions={[5, 10, 20]}
-          highlightOnHover
-          pointerOnHover
-          responsive
+      <h1 className="text-3xl font-bold mb-4">Youth</h1>
+      <div className="shadow-2xl p-2 rounded-md w-[1200px]">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="p-2 border border-gray-300 rounded-md mb-4 w-full"
         />
+        {isLoading && <p>Loading...</p>}
+        {error && <p>Error fetching youth data.</p>}
+        {!isLoading && !error && (
+          <DataTable
+            title="Youth List"
+            columns={columns}
+            data={youth}
+            pagination
+            paginationPerPage={10}
+            paginationRowsPerPageOptions={[5, 10, 20]}
+            highlightOnHover
+            pointerOnHover
+            responsive
+            filterFunction={(rows) => customFilter(rows, searchTerm)}
+          />
+        )}
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../componenets/LandingPage/Navbar";
 import Hero from "../componenets/LandingPage/Hero";
 import About from "../componenets/LandingPage/About";

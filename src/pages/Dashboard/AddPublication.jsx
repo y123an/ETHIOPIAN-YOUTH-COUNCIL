@@ -5,7 +5,9 @@ const AddPublication = () => (
   <>
     <DashboardLayout>
       <h1 className="text-2xl p-10 text-primary">Add Publications</h1>
-      <PublicationUploadForm />
+      <div className="px-20">
+        <PublicationUploadForm />
+      </div>
     </DashboardLayout>
   </>
 );
