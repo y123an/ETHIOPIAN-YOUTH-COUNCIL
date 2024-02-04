@@ -4,7 +4,7 @@ import { news1, news2 } from "../../assets/images";
 
 const News = () => {
   return (
-    <div className="container mx-auto py-16">
+    <div className="container mx-auto py-16 overflow-hidden">
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold p-2 border-b-4 head-font border-primary inline-block">
           News And Updates

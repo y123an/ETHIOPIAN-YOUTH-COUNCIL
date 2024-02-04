@@ -19,10 +19,8 @@ const Messages = () => {
           }
         />
       </div>
-      <div className="flex gap-[100px]">
-        <div className="">
-          <NewsNavigation />
-        </div>
+      <div className="flex w-full flex-col md:flex-row md:items-start items-center justify-center gap-10">
+        <NewsNavigation />
         <div className="">
           <Message />
         </div>

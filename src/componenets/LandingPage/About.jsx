@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const About = () => {
   return (
-    <div className="flex flex-col items-center text-center p-10 gap-5 bg-gray-100">
+    <div className="flex  flex-col items-center text-center p-10 gap-5 bg-gray-100">
       <div className="flex">
         <h1 className="text-3xl p-2 border-b-4 head-font capitalize border-primary">
           About Us

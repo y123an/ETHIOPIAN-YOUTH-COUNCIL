@@ -1,11 +1,11 @@
 import { create } from "zustand";
 import Axios from "../middlewares/Axios";
-import { organizations } from "../utils/constants";
+// import { organizations } from "../utils/constants";
 import { persist } from "zustand/middleware";
 const siteStore = (set) => ({
   Resources: null,
   publications: null,
-  organizations: organizations,
+  organizations: [],
   getResources: async () => {
     await Axios({
       method: "get",
@@ -13,6 +13,34 @@ const siteStore = (set) => ({
     })
       .then((res) => {
         set({ Resources: res.data.resources });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+  getOrganization: async () => {
+    await Axios({
+      method: "get",
+      url: "organization",
+    })
+      .then((res) => {
+        set({ organizations: res.data.organization });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+  searchOrganziation: async (searchParams) => {
+    await Axios({
+      method: "get",
+      url: "organization",
+    })
+      .then((res) => {
+        set({
+          organizations: res.data.organization.filter((item) =>
+            item.name.toLowerCase().includes(searchParams.toLowerCase())
+          ),
+        });
       })
       .catch((err) => {
         console.log(err);

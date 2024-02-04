@@ -22,9 +22,10 @@ export default function Login() {
             localStorage.setItem("youth-token", res.data.token);
           } else if (res.data.role === "org") {
             localStorage.setItem("org-token", res.data.token);
+            navigate("/organization/dashboard");
           } else if (res.data.role === "admin") {
             localStorage.setItem("admin-token", res.data.token);
-            navigate("/dashboard");
+            navigate("/admin/dashboard");
           }
           toast.success("Signed in Successfully", {
             position: "top-right",

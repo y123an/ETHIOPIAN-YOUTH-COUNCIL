@@ -2,7 +2,16 @@ import { useEffect, useState } from "react";
 import Axios from "../middlewares/Axios";
 import { BiDownload } from "react-icons/bi";
 import { motion } from "framer-motion";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { css } from "@emotion/react";
+import { AiOutlineDownload, AiOutlineLoading3Quarters } from "react-icons/ai";
+import { ClipLoader } from "react-spinners";
+import { saveAs } from "file-saver";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 const PdfCard = ({ name, img, filepath, pdf }) => {
   const arrayBufferToBase64 = (buffer) => {
@@ -21,22 +30,14 @@ const PdfCard = ({ name, img, filepath, pdf }) => {
   useEffect(() => {
     const fetchThumbnail = async () => {
       try {
-        // Fetch thumbnail from the backend
         const response = await Axios.get(`${filepath}/thumbnail/${img}`, {
           responseType: "arraybuffer",
         });
-
-        // Convert the thumbnail buffer to a base64 string
-        const base64Thumbnail = `data:image/jpeg;base64,${arrayBufferToBase64(
-          response.data
-        )}`;
-
-        // Set the base64 string to the state
-        setThumbnail(base64Thumbnail);
-        setLoading(false);
+        setThumbnail(response.data);
+        setLoading(false); // Set loading to false once the image is fetched
       } catch (error) {
         console.error("Error fetching thumbnail:", error.message);
-        setLoading(false);
+        setLoading(false); // Set loading to false in case of an error
       }
     };
 
@@ -45,67 +46,50 @@ const PdfCard = ({ name, img, filepath, pdf }) => {
 
   const handleDownload = async () => {
     try {
-      // Fetch PDF from the backend
       const response = await Axios.get(`${filepath}/download/${pdf}`, {
         responseType: "arraybuffer",
       });
 
-      // Create a Blob from the PDF data
-      const pdfBlob = new Blob([new Uint8Array(response.data)], {
-        type: "application/pdf",
-      });
-
-      // Create a download link and trigger the download
-      const downloadLink = document.createElement("a");
-      const url = URL.createObjectURL(pdfBlob);
-      downloadLink.href = url;
-      downloadLink.download = pdf;
-      document.body.appendChild(downloadLink);
-      downloadLink.click();
-      document.body.removeChild(downloadLink);
-
-      // Revoke the Object URL to free up resources
-      URL.revokeObjectURL(url);
+      const pdfBlob = new Blob([response.data], { type: "application/pdf" });
+      saveAs(pdfBlob, pdf);
     } catch (error) {
       console.error("Error fetching PDF:", error);
     }
   };
 
   return (
-    <motion.div
-      className="flex flex-col items-center gap-4 w-full max-w-[400px] mx-auto"
-      whileHover={{ scale: 1.05 }}
-      transition={{ duration: 0.3 }}
-    >
-      <motion.div
-        className="transform hover:-translate-y-5 delay-75 duration-150"
-        whileHover={{ rotate: 5 }}
-      >
+    <div className="flex justify-center items-center gap-10 w-full">
+      <div className="hover:-translate-y-5 transition-transform duration-300 ease-in-out">
         {loading ? (
-          <AiOutlineLoading3Quarters
-            className="text-primary animate-spin"
-            size={32}
+          <ClipLoader
+            css={override}
+            size={50}
+            color={"#36D7B7"}
+            loading={loading}
           />
         ) : (
           <img
-            src={thumbnail}
-            alt="Image from Database"
-            className="w-full max-w-[300px] shadow-lg shadow-primary"
+            src={`data:image/jpeg;base64,${arrayBufferToBase64(thumbnail)}`}
+            alt={`Thumbnail for ${name}`}
+            className="w-48 h-48 object-cover rounded-lg shadow-lg"
           />
         )}
-      </motion.div>
-      <div className="flex flex-col items-center gap-4">
-        <p className="text-xl font-semibold">{name}</p>
-        <motion.button
-          onClick={handleDownload}
-          className="px-4 py-2 bg-primary text-white transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:border-primary hover:text-black hover:bg-white flex items-center gap-2"
-          whileHover={{ scale: 1.1 }}
-        >
-          <BiDownload />
-          Download PDF
-        </motion.button>
       </div>
-    </motion.div>
+      <div className="flex flex-col justify-center gap-4">
+        <div>
+          <p className="text-xl font-bold">{name}</p>
+        </div>
+        <div className="flex flex-col gap-4">
+          <button
+            onClick={handleDownload}
+            className="py-2 px-6 bg-primary flex items-center text-white rounded-md transition ease-in-out duration-300 hover:bg-white hover:text-primary hover:border hover:border-primary focus:outline-none focus:ring focus:border-blue-300"
+          >
+            <AiOutlineDownload size={20} className="mr-2" />
+            Download
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -22,8 +22,8 @@ const OrganizationCard = ({
         onClick={() => setDetailVisible(true)}
       >
         <div className="mb-4">
-          <h1 className="text-xl font-bold">{name}</h1>
-          <p className="text-sm text-gray-500">{category}</p>
+          <h1 className="text-xl font-bold capitalize">{name}</h1>
+          <p className="text-sm text-gray-500 capitalize">{category}</p>
         </div>
         <div className="text-sm text-gray-600">
           <p>{address}</p>

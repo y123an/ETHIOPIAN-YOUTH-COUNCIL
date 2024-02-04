@@ -16,7 +16,7 @@ const Resources = () => {
           description={"Resources from Ethiopian youth council"}
         />
       </div>
-      <div className="flex justify-center">
+      <div className="flex w-full flex-col md:flex-row md:items-start items-center justify-center gap-10">
         <div className="pt-5">
           <NewsNavigation />
         </div>

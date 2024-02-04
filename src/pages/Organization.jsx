@@ -14,12 +14,10 @@ const Organization = () => {
       <div>
         <OurCouncilImage
           title={"Organization"}
-          description={
-            "Search and find about the organization taht are partner with the Council"
-          }
+          description={"Search and find about the organizations "}
         />
       </div>
-      <div className="flex justify-center gap-20">
+      <div className="flex flex-col md:flex-row justify-center gap-20">
         <div className="pt-5">
           <FromCouncilNavigation />
         </div>

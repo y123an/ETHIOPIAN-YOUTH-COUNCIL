@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSiteStore } from "../../context/siteStore";
 import Pagination from "../Pagination";
 import OrganizationCard from "./OrganizationCard";
@@ -6,6 +6,8 @@ import { GrSearchAdvanced } from "react-icons/gr";
 
 const Organization = () => {
   const organizations = useSiteStore((store) => store.organizations);
+  const getOrganization = useSiteStore((store) => store.getOrganization);
+  const searchOrganziation = useSiteStore((store) => store.searchOrganziation);
 
   const totalContent = organizations.length;
   const [contentPerPage, setContentPerPage] = useState(10);
@@ -19,6 +21,10 @@ const Organization = () => {
   let totalPages = Math.ceil(totalContent / contentPerPage);
   const lastContentIndex = currentPage * contentPerPage;
   const firstContentIndex = lastContentIndex - contentPerPage;
+
+  useEffect(() => {
+    getOrganization();
+  }, []);
 
   return (
     <div className="w-full mx-auto p-4">
@@ -36,6 +42,7 @@ const Organization = () => {
                 <input
                   type="text"
                   placeholder="Search organizations..."
+                  onChange={(e) => searchOrganziation(e.target.value)}
                   className="p-2 w-full focus:outline-none"
                 />
                 <button className="bg-blue-500 text-white p-2">
@@ -75,23 +82,29 @@ const Organization = () => {
         </div>
         <div className="w-full md:w-[60%]">
           <div className="grid gap-5">
-            {organizations
-              ?.slice(firstContentIndex, lastContentIndex)
-              .map((organization, index) => (
-                <OrganizationCard
-                  key={index}
-                  name={organization.name}
-                  country={organization.country}
-                  bio={organization.bio}
-                  address={organization.adress}
-                  phone={organization.phone}
-                  email={organization.email}
-                  pobox={organization.poBox}
-                  leaderShip={organization.leaderShip}
-                  category={organization.catagory}
-                  yearOfEstablishment={organization.yearOfEstablishment}
-                />
-              ))}
+            {organizations.length > 0 ? (
+              organizations
+                ?.slice(firstContentIndex, lastContentIndex)
+                .map((organization, index) => (
+                  <OrganizationCard
+                    key={index}
+                    name={organization.name}
+                    country={organization.country}
+                    bio={organization.bio}
+                    address={organization.address}
+                    phone={organization.phone}
+                    email={organization.email}
+                    pobox={organization.poBox}
+                    leaderShip={organization.leaderShip}
+                    category={organization.category}
+                    yearOfEstablishment={organization.yearOfEstablishment}
+                  />
+                ))
+            ) : (
+              <div className="p-10">
+                <p className="text-xl font-light">No organization Found</p>
+              </div>
+            )}
           </div>
           <div className="mt-4">
             <Pagination

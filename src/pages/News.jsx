@@ -14,12 +14,12 @@ const News = () => {
         <OurCouncilImage
           title={"news and updates"}
           description={
-            "news and updatas that happens in the ethiopian youth Council"
+            "News and updatas that happened in the Ethiopian Youth Council"
           }
         />
       </div>
-      <div className="flex">
-        <div className="">
+      <div className="flex w-full flex-col md:flex-row md:items-start items-center justify-center gap-10">
+        <div className="pt-5">
           <NewsNavigation />
         </div>
         <div className="">

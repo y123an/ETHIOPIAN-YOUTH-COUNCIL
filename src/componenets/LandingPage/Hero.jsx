@@ -30,7 +30,7 @@ const Hero = () => {
           delay: 2300,
           disableOnInteraction: false,
         }}
-        className="w-[100%] h-[90vh]"
+        className="w-[100%] md:h-[90vh]"
       >
         <SwiperSlide className="">
           <img src={heroImage} alt="img" className="w-[100%]  object-center " />
@@ -48,7 +48,7 @@ const Hero = () => {
           <img src={heroImage4} alt="img" className="w-[100%] object-center " />
         </SwiperSlide>
       </Swiper>
-      <div className="bg-gradient-to-r from-black/[0.25] from-60% white via-30% absolute w-full top-24 h-[90vh] z-10 "></div>
+      <div className="bg-gradient-to-r from-black/[0.2] from-60% white via-30% absolute w-full top-[100px] md:h-[90vh] h-[210px] z-10 "></div>
       <motion.div
         initial={{
           x: -300,
@@ -62,7 +62,7 @@ const Hero = () => {
           // delay: 0.2,
           type: "tween",
         }}
-        className="absolute w-full transition-alls px-40 items-center top-32 h-[90vh] z-20"
+        className="absolute w-full transition-all px-40 items-center  top-[150px] md:h-[90vh] z-20"
       >
         <HeroContent />
       </motion.div>
