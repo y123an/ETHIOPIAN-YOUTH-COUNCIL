@@ -9,10 +9,10 @@ const Layout = (props) => {
   const pathname = useLocation();
 
   return (
-    <div>
-      <div className="flex">
+    <div className="w-full">
+      <div className="flex w-full">
         <Sidebar />
-        <div>
+        <div className="w-full">
           {/* <TopNav /> */}
           <div>{children}</div>
         </div>

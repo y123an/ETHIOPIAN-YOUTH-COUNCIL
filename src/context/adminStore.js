@@ -4,6 +4,8 @@ const AdminStore = (set) => ({
   dasboardOverView: {},
   publications: [],
   Resources: [],
+  opportunity: [],
+  News: [],
   youth: [],
   organizations: null,
   getDashboardOverView: async () => {
@@ -17,6 +19,17 @@ const AdminStore = (set) => ({
       })
       .catch((err) => console.log(err));
   },
+  getOpportunity: async () => {
+    await Axios.get("opportunity", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("admin-token")}`,
+      },
+    })
+      .then((res) => {
+        set({ opportunity: res.data });
+      })
+      .catch((err) => console.log(err));
+  },
   getResources: async () => {
     await Axios({
       method: "get",
@@ -24,6 +37,18 @@ const AdminStore = (set) => ({
     })
       .then((res) => {
         set({ Resources: res.data.resources });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+  getNews: async () => {
+    await Axios({
+      method: "get",
+      url: "news",
+    })
+      .then((res) => {
+        set({ News: res.data.news });
       })
       .catch((err) => {
         console.log(err);

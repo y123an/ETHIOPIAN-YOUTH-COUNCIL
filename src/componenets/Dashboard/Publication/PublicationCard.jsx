@@ -4,6 +4,7 @@ import { AiOutlineDownload, AiOutlineDelete } from "react-icons/ai";
 import { saveAs } from "file-saver";
 import { css } from "@emotion/react";
 import { ClipLoader } from "react-spinners";
+import { Bounce, toast } from "react-toastify";
 
 const override = css`
   display: block;
@@ -11,7 +12,7 @@ const override = css`
   border-color: red;
 `;
 
-const PublicationCard = ({ id, name, img, filepath, pdf }) => {
+const PublicationCard = ({ id, name, img, filepath, pdf, getFile }) => {
   const arrayBufferToBase64 = (buffer) => {
     let binary = "";
     const bytes = new Uint8Array(buffer);
@@ -55,8 +56,29 @@ const PublicationCard = ({ id, name, img, filepath, pdf }) => {
     }
   };
 
-  const handleDelete = () => {
-    // Implement delete functionality when ready
+  const handleDelete = async (id) => {
+    await Axios.delete(filepath + "/" + id, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("admin-token")}`,
+      },
+    })
+      .then((res) => {
+        toast.success("File deleted Successfully", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+        getFile();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -90,7 +112,7 @@ const PublicationCard = ({ id, name, img, filepath, pdf }) => {
             Download
           </button>
           <button
-            onClick={handleDelete}
+            onClick={() => handleDelete(id)}
             className="py-2 px-6 flex bg-red-500 items-center text-white rounded-md transition ease-in-out duration-300 hover:bg-white hover:text-red-500 hover:border hover:border-red-500 focus:outline-none focus:ring focus:border-blue-300"
           >
             <AiOutlineDelete size={20} className="mr-2" />

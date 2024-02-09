@@ -24,7 +24,7 @@ const Footer = () => {
                 <TiArrowRightOutline size={14} /> About EYC
               </p>
             </Link>
-            <Link to="/our-council">
+            <Link to="/our-council/history">
               <p className="flex items-center gap-2">
                 <TiArrowRightOutline size={14} /> Our Council
               </p>

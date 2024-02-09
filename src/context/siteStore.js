@@ -1,11 +1,13 @@
 import { create } from "zustand";
 import Axios from "../middlewares/Axios";
-// import { organizations } from "../utils/constants";
 import { persist } from "zustand/middleware";
+import { harer } from "../assets/gallery";
 const siteStore = (set) => ({
   Resources: null,
   publications: null,
   organizations: [],
+  News: [],
+  photo: harer,
   getResources: async () => {
     await Axios({
       method: "get",
@@ -13,6 +15,18 @@ const siteStore = (set) => ({
     })
       .then((res) => {
         set({ Resources: res.data.resources });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+  getNews: async () => {
+    await Axios({
+      method: "get",
+      url: "news",
+    })
+      .then((res) => {
+        set({ News: res.data.news });
       })
       .catch((err) => {
         console.log(err);
@@ -45,6 +59,9 @@ const siteStore = (set) => ({
       .catch((err) => {
         console.log(err);
       });
+  },
+  setPhoto: (photo) => {
+    set({ photo: photo });
   },
   getPublication: async () => {
     await Axios({

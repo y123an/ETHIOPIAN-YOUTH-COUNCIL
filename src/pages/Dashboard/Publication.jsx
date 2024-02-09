@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import DashboardLayout from "../../layouts/Dashboard/Layout";
+import DashboardLayout from "../../layouts/Dashboard/Admin/Layout";
 import { useAdminStore } from "../../context/adminStore";
 import PublicationCard from "../../componenets/Dashboard/Publication/PublicationCard";
 import { useNavigate } from "react-router-dom";
@@ -32,10 +32,12 @@ const Publication = () => {
           {publications?.map((publication) => (
             <PublicationCard
               key={publication.id}
+              id={publication.id}
               name={publication.name}
               img={publication.thumbnail_file_name}
               pdf={publication.pdf_file_name}
               filepath={"publication"}
+              getFile={getPublications}
             />
           ))}
         </div>

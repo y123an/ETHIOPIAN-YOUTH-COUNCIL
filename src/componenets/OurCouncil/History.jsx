@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const History = () => {
   return (
-    <div className="flex flex-col items-center p-8 md:p-16 lg:p-20">
+    <div className="flex flex-col text-justify items-center p-8 md:p-16 lg:p-20">
       <motion.div
         initial={{
           x: -100,

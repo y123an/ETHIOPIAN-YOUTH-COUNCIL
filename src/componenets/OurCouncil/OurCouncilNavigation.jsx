@@ -40,17 +40,6 @@ const OurCouncilNavigation = () => {
           Our Vision
         </Link>
         <Link
-          to="/our-council/leadership"
-          className={`px-4 py-2 flex items-center gap-2 ${
-            isActiveLink("/our-council/leadership")
-              ? "text-primary font-bold"
-              : "text-gray-700"
-          }`}
-        >
-          <FaAngleDoubleRight size={20} />
-          Leadership
-        </Link>
-        <Link
           to="/our-council/mission"
           className={`px-4 py-2 flex items-center gap-2 ${
             isActiveLink("/our-council/mission")
@@ -60,6 +49,17 @@ const OurCouncilNavigation = () => {
         >
           <FaAngleDoubleRight size={20} />
           Our Mission
+        </Link>
+        <Link
+          to="/our-council/leadership"
+          className={`px-4 py-2 flex items-center gap-2 ${
+            isActiveLink("/our-council/leadership")
+              ? "text-primary font-bold"
+              : "text-gray-700"
+          }`}
+        >
+          <FaAngleDoubleRight size={20} />
+          Leadership
         </Link>
       </div>
     </div>

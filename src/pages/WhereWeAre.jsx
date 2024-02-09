@@ -1,11 +1,10 @@
-import React from "react";
 import Navbar from "../componenets/LandingPage/Navbar";
 import OurCouncilImage from "../componenets/OurCouncil/OurCouncilImage";
 import Footer from "../componenets/LandingPage/Footer";
-import Message from "../componenets/LandingPage/Messages";
-import NewsNavigation from "../componenets/OurCouncil/NewsNavigation";
+import WhereWeAreNavigation from "../componenets/OurCouncil/WhereWeAreNavigation";
+import Gallery from "../componenets/Gallery";
 
-const Messages = () => {
+const WhereWeAre = () => {
   return (
     <div>
       <div className="">
@@ -13,16 +12,16 @@ const Messages = () => {
       </div>
       <div>
         <OurCouncilImage
-          title={"Messages"}
-          description={
-            "Messages from the council members and the partner organization  "
-          }
+          title={"Where We are"}
+          description={"the places where you can find us"}
         />
       </div>
       <div className="flex w-full flex-col md:flex-row md:items-start items-center justify-center gap-10">
-        <NewsNavigation />
-        <div className="">
-          <Message />
+        <div className="pt-5">
+          <WhereWeAreNavigation />
+        </div>
+        <div className="py-20 px-10">
+          <Gallery />
         </div>
       </div>
       <div>
@@ -32,4 +31,4 @@ const Messages = () => {
   );
 };
 
-export default Messages;
+export default WhereWeAre;

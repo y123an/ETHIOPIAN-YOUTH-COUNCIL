@@ -24,22 +24,6 @@ import { useAdminStore } from "../../context/adminStore";
 import Dashboard from "../../pages/Dashboard/Dashboard";
 
 const OverviewDashboard = () => {
-  // Sample data for the charts
-  const data = [
-    { month: "1", youthSignUp: 30 },
-    { month: "2", youthSignUp: 50 },
-    { month: "3", youthSignUp: 80 },
-    { month: "4", youthSignUp: 120 },
-  ];
-
-  const lineChartData = [
-    { month: "Jan", posts: 15 },
-    { month: "Feb", posts: 20 },
-    { month: "Mar", posts: 25 },
-    { month: "Apr", posts: 18 },
-    { month: "May", posts: 30 },
-  ];
-
   // Calculate total youth, total organization, and total posts
   const dasboardOverView = useAdminStore((store) => store.dasboardOverView);
   const getDashboardOverView = useAdminStore(
@@ -89,7 +73,7 @@ const OverviewDashboard = () => {
           <StatCard
             icon={<FaClipboardList />}
             label="Total Posts"
-            value={totalPosts}
+            value={dasboardOverView?.opportunityCount}
           />
         </div>
         {/* Pie Chart Section */}
@@ -115,11 +99,20 @@ const OverviewDashboard = () => {
         <div className="mt-8 lg:w-1/2">
           <h2 className="text-2xl font-semibold mb-4">Monthly Post Activity</h2>
           <div className="overflow-auto">
-            <LineChart width={600} height={300} data={lineChartData}>
+            <LineChart
+              width={600}
+              height={300}
+              data={dasboardOverView?.postCountBasedOnMonthsquery?.map(
+                ({ month, oppCount }) => ({
+                  month: monthNames[month - 1],
+                  oppCount,
+                })
+              )}
+            >
               <XAxis dataKey="month" />
               <YAxis />
               <Tooltip />
-              <Line type="monotone" dataKey="posts" stroke="#82ca9d" />
+              <Line type="monotone" dataKey="oppCount" stroke="#82ca9d" />
             </LineChart>
           </div>
         </div>

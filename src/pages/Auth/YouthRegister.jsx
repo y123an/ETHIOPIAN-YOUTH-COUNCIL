@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { authBg } from "../../assets/images";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
 import Axios from "../../middlewares/Axios";
 
@@ -94,12 +94,12 @@ export default function YouthRegister() {
                       <p>As an Organization</p>
                     </button>
                   </div>
-                  <div className="text-center mb-3">
+                  {/* <div className="text-center mb-3">
                     <h6 className="text-blueGray-500 text-sm font-bold">
                       Sign up with
                     </h6>
-                  </div>
-                  <div className="btn-wrapper text-center">
+                  </div> */}
+                  {/* <div className="btn-wrapper text-center">
                     <button
                       className="bg-white gap-3 active:bg-blueGray-50 text-blueGray-700  px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-md ease-linear transition-all duration-150"
                       type="button"
@@ -114,12 +114,12 @@ export default function YouthRegister() {
                       <FaGoogle size={24} />
                       Google
                     </button>
-                  </div>
+                  </div> */}
                   <hr className="mt-6 border-b-1 border-blueGray-300" />
                 </div>
                 <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-                  <div className="text-blue-700 text-xl text-center mb-3 font-bold">
-                    <small>Or sign up with credentials</small>
+                  <div className="capitalize text-blue-700 text-xl text-center mb-3 font-bold">
+                    <small>sign up with credentials</small>
                   </div>
                   <form onSubmit={handleSubmit}>
                     <div className="flex gap-2">
@@ -206,7 +206,7 @@ export default function YouthRegister() {
                       />
                     </div>
 
-                    <div>
+                    <div className="flex justify-between">
                       <label className="inline-flex items-center cursor-pointer">
                         <input
                           id="customCheckLogin"
@@ -224,6 +224,11 @@ export default function YouthRegister() {
                           </a>
                         </span>
                       </label>
+                      <div>
+                        <Link to={"/login"} className="text-blue-300">
+                          Already have an account?
+                        </Link>
+                      </div>
                     </div>
 
                     <div className="text-center mt-6">

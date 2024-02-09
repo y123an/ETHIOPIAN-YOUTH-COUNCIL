@@ -1,15 +1,15 @@
-import ResourcesUploadForm from "../../componenets/Dashboard/ResourcesUploadForm";
 import DashboardLayout from "../../layouts/Dashboard/Admin/Layout";
+import CompanyDetailsForm from "../../componenets/Dashboard/CompanyDetailsForm";
 
-const AddResources = () => (
-  <>
+const CompanyDeatil = () => {
+  return (
     <DashboardLayout>
       <h1 className="text-2xl p-10 text-primary">Add Resources</h1>
       <div className="px-20">
-        <ResourcesUploadForm />
+        <CompanyDetailsForm />
       </div>
     </DashboardLayout>
-  </>
-);
+  );
+};
 
-export default AddResources;
+export default CompanyDeatil;

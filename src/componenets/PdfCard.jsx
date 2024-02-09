@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import Axios from "../middlewares/Axios";
-import { BiDownload } from "react-icons/bi";
-import { motion } from "framer-motion";
 import { css } from "@emotion/react";
-import { AiOutlineDownload, AiOutlineLoading3Quarters } from "react-icons/ai";
+import { AiOutlineDownload } from "react-icons/ai";
 import { ClipLoader } from "react-spinners";
 import { saveAs } from "file-saver";
+import { Bounce, toast } from "react-toastify";
 
 const override = css`
   display: block;

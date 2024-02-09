@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import DashboardLayout from "../../layouts/Dashboard/Layout";
+import DashboardLayout from "../../layouts/Dashboard/Admin/Layout";
 import {
   AiOutlineSearch,
   AiOutlineInfoCircle,
@@ -7,6 +7,7 @@ import {
 } from "react-icons/ai";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { useAdminStore } from "../../context/adminStore";
+import { Link } from "react-router-dom";
 
 const organizationsData = [
   {
@@ -74,7 +75,11 @@ const Companies = () => {
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {filteredOrganizations?.map((organization) => (
-            <li key={organization.id}>
+            <Link
+              to={"/admin/organization/detail"}
+              state={{ id: organization.id }}
+              key={organization.id}
+            >
               <div className="bg-white p-6 rounded-md shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
                 <h2 className="text-xl font-semibold mb-2">
                   {organization.name}
@@ -87,15 +92,9 @@ const Companies = () => {
                   >
                     <AiOutlineInfoCircle size={20} />
                   </button>
-                  <button
-                    className="text-gray-500 hover:text-green-500"
-                    onClick={() => handleDownloadClick(organization)}
-                  >
-                    <AiOutlineDownload size={20} />
-                  </button>
                 </div>
               </div>
-            </li>
+            </Link>
           ))}
         </ul>
       </div>

@@ -1,8 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
+import Axios from "../../middlewares/Axios";
+import { ClipLoader } from "react-spinners";
+import { css } from "@emotion/react";
 
-const NewsCard = ({ date, news, img, link }) => {
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
+const NewsCard = ({ date, description, img, link }) => {
   const [see, setSee] = useState(false);
+  const arrayBufferToBase64 = (buffer) => {
+    let binary = "";
+    const bytes = new Uint8Array(buffer);
+    const len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return btoa(binary);
+  };
+
+  const [thumbnail, setThumbnail] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchThumbnail = async () => {
+      try {
+        const response = await Axios.get(`news/thumbnail/${img}`, {
+          responseType: "arraybuffer",
+        });
+        setThumbnail(response.data);
+        setLoading(false); // Set loading to false once the image is fetched
+      } catch (error) {
+        console.error("Error fetching thumbnail:", error.message);
+        setLoading(false); // Set loading to false in case of an error
+      }
+    };
+
+    fetchThumbnail();
+  }, [img]);
 
   return (
     <div
@@ -12,11 +49,20 @@ const NewsCard = ({ date, news, img, link }) => {
     >
       {/* Image Section */}
       <div className="relative">
-        <img
-          src={img}
-          alt=""
-          className="w-full rounded-t-md transition transform hover:scale-105 hover:bg-indigo-500 duration-300"
-        />
+        {loading ? (
+          <ClipLoader
+            css={override}
+            size={50}
+            color={"#36D7B7"}
+            loading={loading}
+          />
+        ) : (
+          <img
+            src={`data:image/jpeg;base64,${arrayBufferToBase64(thumbnail)}`}
+            alt={`Thumbnail for ${name}`}
+            className="object-cover rounded-lg shadow-lg"
+          />
+        )}
         {/* Overlay for transition effect */}
         <div
           className={`absolute inset-0 bg-indigo-500 opacity-0 transition-opacity ${
@@ -31,7 +77,7 @@ const NewsCard = ({ date, news, img, link }) => {
           <FaCalendarAlt />
           <span>{date}</span>
         </div>
-        <p className="font-bold text-gray-800">{news}</p>
+        <p className="font-bold text-gray-800">{description}</p>
 
         {/* Read More Section */}
         <div
